@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title Домашняя библиотека
+        link(rel='stylesheet', href='/css/login_page.css')
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet")
+    body
+        div.container
+            div.lib-label
+                h1 Домашняя библиотека
+            form.login-container
+                div.login_label
+                    p Личный кабинет
+                div.username
+                    input(type="text", placeholder="Логин" required) 
+                div.password
+                    input(type="password", placeholder="Пароль" required) 
+                div.submit-button
+                    input(type="submit", value="Войти")
