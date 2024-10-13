@@ -6,16 +6,18 @@ html
         title Домашняя библиотека
         link(rel='stylesheet', href='/css/login_page.css')
         link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
     body
         div.container
             div.lib-label
                 h1 Домашняя библиотека
-            form.login-container
+            form.login-container(action="/api/login", method="POST") 
                 div.login_label
                     p Личный кабинет
+                    i(class="fa-solid fa-user")
                 div.username
-                    input(type="text", placeholder="Логин" required) 
+                    input(type="text", name="username", placeholder="Логин" required) 
                 div.password
-                    input(type="password", placeholder="Пароль" required) 
+                    input(type="password", name="password", placeholder="Пароль" required) 
                 div.submit-button
                     input(type="submit", value="Войти")

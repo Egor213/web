@@ -57,6 +57,19 @@ h1 {
     
 }
 
+.login_label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_label i{
+    margin-top: 48px;
+    margin-bottom: 27px;
+    margin-left: 10px;
+    font-size: 25px;
+}
+
 .login_label p{
     
     font-family: 'Courier New', Courier, monospace;

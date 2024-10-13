@@ -1,0 +1,37 @@
+{
+  "book 1": {
+    "title": "Евгений Онегин",
+    "author": "А. С. Пушкин",
+    "owner": null,
+    "date_return": null,
+    "img": null
+  },
+  "book 2": {
+    "title": "Ревизор",
+    "author": "Н. В. Гоголь",
+    "owner": null,
+    "date_return": null,
+    "img": null
+  },
+  "book 3": {
+    "title": "Капитанская дочка",
+    "author": "А. С. Пушкин",
+    "owner": null,
+    "date_return": null,
+    "img": null
+  },
+  "book 4": {
+    "title": "Отцы и дети",
+    "author": "И. С. Тургенев",
+    "owner": null,
+    "date_return": null,
+    "img": null
+  },
+  "book 6": {
+    "title": "test",
+    "author": "test",
+    "owner": null,
+    "date_return": null,
+    "img": null
+  }
+}
