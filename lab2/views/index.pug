@@ -9,9 +9,12 @@ html
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
     body
         div.container
+            if errorMessage
+                script.
+                    alert("#{errorMessage}")
             div.lib-label
                 h1 Домашняя библиотека
-            form.login-container(action="/api/login", method="POST") 
+            form.login-container(action="/api/login", method="POST")
                 div.login_label
                     p Личный кабинет
                     i(class="fa-solid fa-user")

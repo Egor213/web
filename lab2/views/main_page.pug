@@ -8,15 +8,16 @@ html
         link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
         link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap")
+        script(src='/frontend/main_page.js')
     body
         div.container
             div.label 
                 h1 Личный кабинет
             div.info-user
                 div.icon
-                    p empty 
+                    input(type="button", value='Загрузить изображение')
                 div.label-login
-                    h3 Логин:
+                    h3 Логин: #{login}
                     hr
             div.tools 
                 div.label_tools
@@ -29,8 +30,6 @@ html
             div.dop-line
                 hr  
             div.catalog
-                p test 
-            div.more-book
-                input(type="button", value="Показать ещё")
+                ul#book-list
             
             
