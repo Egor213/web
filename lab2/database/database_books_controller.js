@@ -66,7 +66,7 @@ class DatabaseBooksController {
             img: img
         };
         this.saveJsonData(json_data);
-        return true;
+        return count + 1;
     }
 
     getBookById(id) {

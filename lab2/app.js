@@ -1,5 +1,6 @@
 const express = require("express");
 const server = express();
+
 const router = require('./js/routes/index');
 const bodyParser = require('body-parser');
 let database_users = require('./database/database_users_controller');
@@ -19,6 +20,7 @@ server.set("views", `./views`);
 
 
 
+
 server.get("/", (req, res) => {
     res.render("index.pug");
 });
@@ -26,6 +28,8 @@ server.get("/", (req, res) => {
 server.get("/main_page", (req, res) => {
     res.render("main_page.pug")
 });
+
+
 
 
 

@@ -28,38 +28,38 @@
     "img": null
   },
   "book 5": {
-    "title": "adventure",
-    "author": "egor",
+    "title": "1",
+    "author": "1",
     "owner": null,
     "date_return": null,
     "img": null
   },
   "book 6": {
-    "title": "adventure2",
-    "author": "egor",
+    "title": "2",
+    "author": "2",
+    "owner": null,
+    "date_return": null,
+    "img": "../img_book/1729001700035.jpg"
+  },
+  "book 7": {
+    "title": "test",
+    "author": "test",
+    "owner": null,
+    "date_return": null,
+    "img": "../img_book/1729001849447.jpg"
+  },
+  "book 8": {
+    "title": "Дубровский",
+    "author": "А. С. Пушкин",
+    "owner": null,
+    "date_return": null,
+    "img": "../img_book/1729001880062.jpg"
+  },
+  "book 9": {
+    "title": "123",
+    "author": "choo",
     "owner": null,
     "date_return": null,
     "img": null
-  },
-  "book 7": {
-    "title": "adventure3",
-    "author": "egor",
-    "owner": null,
-    "date_return": "26.02.2005",
-    "img": "../img_book/rev.jpg"
-  },
-  "book 8": {
-    "title": "adventure4",
-    "author": "egor",
-    "owner": null,
-    "date_return": null,
-    "img": "../img_book/oneg.jpg"
-  },
-  "book 9": {
-    "title": "adventure5",
-    "author": "egor",
-    "owner": null,
-    "date_return": null,
-    "img": "../img_book/oneg.jpg"
   }
 }

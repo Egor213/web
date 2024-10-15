@@ -271,6 +271,7 @@ hr {
 }
 
 .add-book-window {
+    display: none;
     width: 40%;
     height: 35%;
     background-color: #694b27;

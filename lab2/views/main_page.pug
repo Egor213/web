@@ -32,21 +32,20 @@ html
             div.catalog
                 div.grid#book-grid
             div.add-book-window
-                form.login-container
-                    div.title-close-window
-                        div.label-window
-                            h1  Добавить книгу
-                        div.close-window
-                            i(class="fa-solid fa-xmark")
-                    div.information
-                        div.author-book
-                            input(type='text', name='author_book', placeholder="Введите автора" required)
-                        div.title-book
-                            input(type='text', name='title_book', placeholder="Введите название" required)
-                        div.img-book
-                            input(type='button', name='img_book', value="Загрузить изображение")
-                    div.send-button
-                        input(type='submit', value="Загрузить книгу")
+                div.title-close-window
+                    div.label-window
+                        h1  Добавить книгу
+                    div.close-window
+                        i(class="fa-solid fa-xmark")
+                div.information
+                    div.author-book
+                        input(type='text', name='author_book', placeholder="Введите автора" required)
+                    div.title-book
+                        input(type='text', name='title_book', placeholder="Введите название" required)
+                    div.img-book
+                        input(type='file', id='imageUpload', accept="image/*")
+                div.send-button
+                    input(type='submit', value="Загрузить книгу")
 
 
     script(src='/frontend/main_page.js')

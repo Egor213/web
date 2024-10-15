@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     load_books();
     add_book_event();
     close_add_window();
+    send_button_book();
 })
 
 function load_books() {
@@ -37,6 +38,12 @@ function add_book_event() {
     const window_card = document.querySelector(".add-book-window");
     add_button.addEventListener('click', function() {
         window_card.style.display = 'block';
+        const author_input = document.querySelector('.author-book input[type="text"]');
+        const title_input = document.querySelector('.title-book input[type="text"]');
+        const file_input = document.querySelector('.img-book input[type="file"]');
+        title_input.value = '';
+        author_input.value = '';
+        file_input.value = '';
     });
 
     
@@ -142,4 +149,75 @@ function close_add_window() {
     close.addEventListener("click", function() {
         window_card.style.display = 'none';
     })
+}
+
+function send_button_book() {
+    const send_button = document.querySelector('.send-button input[type="submit"]');
+    send_button.addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        const file_input = document.querySelector('.img-book input[type="file"]');
+        const author_input = document.querySelector('.author-book input[type="text"]');
+        const title_input = document.querySelector('.title-book input[type="text"]');
+        if (!author_input.value || !title_input.value) {
+            alert("Вы не ввели автора или название книги!")
+            return;
+        }
+        const file = file_input.files[0];
+
+        if (file) {
+            const form_data = new FormData();
+            form_data.append('file', file);       
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/api/upload", true); 
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Изображение загружено успешно:', xhr.responseText);
+                    const path_file = xhr.responseText; 
+                    send_book_info(title_input.value, author_input.value, path_file);
+                } else {
+                    console.error('Ошибка при загрузке изображения:', xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Ошибка запроса:', xhr.statusText);
+            };
+            xhr.send(form_data);
+        } else {
+            console.log("Файла нет");
+            send_book_info(title_input.value, author_input.value, null);
+        }
+    });
+}
+
+function send_book_info(title, author, path_file) {
+    const xhr = new XMLHttpRequest();
+    const url = new URL('/api/main_page/add_book', window.location.origin);
+    url.searchParams.append('title', title);
+    url.searchParams.append('author', author);
+    if (path_file) {
+        url.searchParams.append('img', path_file); 
+    }
+    xhr.open("POST", url.toString(), true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('Книга добавлена успешно:', xhr.responseText);
+            const window_card = document.querySelector(".add-book-window");
+            window_card.style.display = 'none';
+            const data = {
+                author: author,
+                title: title,
+                img: path_file
+            }
+            add_book(JSON.parse(xhr.responseText).id, data)
+        } else if (xhr.status === 404) {
+            alert('Такая книга уже существует!');
+        } else{
+            console.error('Ошибка при добавлении книги:', xhr.statusText);
+        }
+    };
+    xhr.onerror = function() {
+        console.error('Ошибка запроса при добавлении книги:', xhr.statusText);
+    };
+    xhr.send(); 
 }

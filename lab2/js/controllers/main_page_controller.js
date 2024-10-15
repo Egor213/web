@@ -4,13 +4,13 @@ class MainPageController {
     addBook(req, res) {
         const { title, author, img } = req.query;
         if (!title || !author) {
-            return res.status(400).json({ error: 'Title и author не найдены или такая книга уже существует' });
+            return res.status(404).json({ error: 'Title и author не найдены или такая книга уже существует' });
         }
         const book = database_book.addBook(title, author, img);
         if (book) {
-            res.status(200).json({ message: "Книга создана"});
+            res.status(200).json({ id:book,  message: "Книга создана"});
         } else {
-            res.status(404).json({ error: 'Title и author не найдены' });
+            res.status(404).json({ error: 'Title и author не найдены или такая книга уже существует' });
         }
     }
 
