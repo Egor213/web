@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title Книга
+        link(rel='stylesheet', href='/css/book_page.css')
+    body
+        div.container
+            div.book-info
+                img(src=img, alt='Обложка книги')
+                div.details
+                    p Автор: #{author}
+                    p Название: #{title}
+                    p Владелец: #{owner}
+                    p Дата возврата: #{date_return}
+                div.buttons
+                    button#changeAuthor Изменить автора
+                    button#changeTitle Изменить название
+                    button#changeRetDate Изменить дату возврата
+                    button#DelRetDate Убрать дату возврата
+                    button#giveBook Выдать книгу
+                    button#returnBook Вернуть книгу
+            button.back-button Вернуться назад
+    script(type="module" src='/frontend/select_book.js')

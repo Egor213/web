@@ -9,6 +9,9 @@ html
         link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
         link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap")
+        script.
+            const login = "#{login}";
+            localStorage.setItem('login', login);
     body
         div.container
             div.label 
@@ -26,7 +29,7 @@ html
                     div.add-book
                         input(type="button", id="add-book-button", value="Добавить книгу")
                     div.sort
-                        input(type="button", value="Сортировка")
+                        input(type="button", value="Фильтрация")
             div.dop-line
                 hr  
             div.catalog
@@ -46,8 +49,23 @@ html
                         input(type='file', id='imageUpload', accept="image/*")
                 div.send-button
                     input(type='submit', value="Загрузить книгу")
+    
+            div.filter-window
+                div.title-filter-window
+                    div.label-filter-window
+                        h1  Фильтрация
+                    div.close-filter-window
+                        i(class="fa-solid fa-xmark")
+                div.optional-filter-window
+                    div.have-filter-window
+                        input(type='checkbox', id='have-filter', onchange='toggle_checkboxes()')
+                        p В наличии
+                    div.lose-data-filter-window
+                        input(type='checkbox', id='lose-data-filter', onchange='toggle_checkboxes()')
+                        p Дата возврата просрочена
+                div.send-button-filter-window
+                    input(type='button', value="Отфильтровать")
 
-
-    script(src='/frontend/main_page.js')
+    script(type="module" src='/frontend/main_page.js')
             
             

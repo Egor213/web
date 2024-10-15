@@ -2,64 +2,64 @@
   "book 1": {
     "title": "Евгений Онегин",
     "author": "А. С. Пушкин",
-    "owner": null,
-    "date_return": null,
+    "owner": "Egor",
+    "date_return": "10.10.2000",
     "img": "../img_book/oneg.jpg"
   },
   "book 2": {
     "title": "Ревизор",
     "author": "Н. В. Гоголь",
-    "owner": null,
+    "owner": "Egor",
     "date_return": null,
     "img": "../img_book/rev.jpg"
   },
   "book 3": {
     "title": "Капитанская дочка",
     "author": "А. С. Пушкин",
-    "owner": null,
-    "date_return": null,
-    "img": null
+    "owner": "Egor",
+    "date_return": "10.01.2000",
+    "img": "../img_book/1729008622246.jpg"
   },
   "book 4": {
     "title": "Отцы и дети",
     "author": "И. С. Тургенев",
-    "owner": null,
+    "owner": "test",
     "date_return": null,
-    "img": null
+    "img": "../img_book/1729008645087.jpg"
   },
   "book 5": {
-    "title": "1",
-    "author": "1",
+    "title": "Алиса в стране чудес",
+    "author": "Л. Кэрролл",
     "owner": null,
     "date_return": null,
-    "img": null
+    "img": "../img_book/1729024961289.webp"
   },
   "book 6": {
-    "title": "2",
-    "author": "2",
+    "title": "Чучело",
+    "author": "В. Железников",
     "owner": null,
     "date_return": null,
-    "img": "../img_book/1729001700035.jpg"
+    "img": "../img_book/1729025028605.jpg"
   },
   "book 7": {
-    "title": "test",
-    "author": "test",
+    "title": "Алые паруса",
+    "author": "А. Грин",
     "owner": null,
     "date_return": null,
-    "img": "../img_book/1729001849447.jpg"
+    "img": "../img_book/1729025090799.jpg"
   },
   "book 8": {
     "title": "Дубровский",
     "author": "А. С. Пушкин",
     "owner": null,
     "date_return": null,
-    "img": "../img_book/1729001880062.jpg"
+    "img": "../img_book/1729025199686.webp"
   },
   "book 9": {
-    "title": "123",
-    "author": "choo",
+    "title": "Преступление и наказание",
+    "author": "Ф. Достоевский",
     "owner": null,
-    "date_return": null,
-    "img": null
+    "date_return": "10.10.2027",
+    "img": "../img_book/1729025235981.jpg"
   }
 }

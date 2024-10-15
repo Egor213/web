@@ -119,6 +119,25 @@ class DatabaseBooksController {
         }
     }
 
+    is_valid_date(date_string) {
+        const regex = /^\d{2}\.\d{2}\.\d{4}$/;
+        if (!regex.test(date_string)) {
+            return false;
+        }
+
+        const parts = date_string.split('.');
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10);
+
+        if (month < 1 || month > 12) {
+            return false;
+        }
+
+        const days_in_month = new Date(year, month, 0).getDate();
+        return day > 0 && day <= days_in_month;
+    }
+
     changeParam(param, id, value=0) {
         const json_data = this.getJsonData();
         const book_key = `book ${id}`;
@@ -131,13 +150,22 @@ class DatabaseBooksController {
 
         switch (param) {
             case Param.AUTHOR:
-                book.author = value;
+                if (!this.checkBook(book.title, value))
+                    book.author = value;
+                else
+                    return false;
                 break;
             case Param.TITLE:
-                book.title = value;
+                if (!this.checkBook(value, book.author))
+                    book.title = value;
+                else
+                    return false;
                 break;
             case Param.RET_DATA:
-                book.date_return = value; 
+                if (this.is_valid_date(value))
+                    book.date_return = value; 
+                else
+                    return false;
                 break;
             case Param.SET_OWNER:
                 book.owner = value; 
@@ -155,6 +183,32 @@ class DatabaseBooksController {
         this.saveJsonData(json_data);
         return true;
     }
+
+    getOwnBooks(owner) {
+        const json_data = this.getJsonData(); 
+        const result = {}; 
+        for (let key in json_data) {
+            if (json_data[key].owner === owner) {
+                result[key] = json_data[key]; 
+            }
+        }
+        return result; 
+    }
+
+    getLoseRetData() {
+        const json_data = this.getJsonData(); 
+        const result = {};
+        const currentDate = new Date(); 
+    
+        for (let key in json_data) {
+            const book = json_data[key];
+            if (book.date_return && new Date(book.date_return) < currentDate) {
+                result[key] = book;
+            }
+        }
+        return result; 
+    }
+    
 }
 
 

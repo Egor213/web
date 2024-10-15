@@ -34,7 +34,7 @@
     margin: 5px;
     box-sizing: border-box; 
     width: 300px;
-    height: 600px;
+    height: 620px;
     margin-top: 10px;
     margin-bottom: 15px;
     border: 2px solid #6a4e2c;
@@ -65,7 +65,7 @@
 .title-card-book {
     font-weight: 700;
     color: #111111;
-    font-size: 26px;
+    font-size: 24px;
     margin: 10px 0px;
 }
 

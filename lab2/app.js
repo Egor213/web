@@ -25,12 +25,28 @@ server.get("/", (req, res) => {
     res.render("index.pug");
 });
 
+
+const fs = require('fs');
+
+function get_login_from_json() {
+    const filePath = "./js/controllers/cur_session.json"
+
+    try {
+        const data = fs.readFileSync(filePath, 'utf8');
+        const jsonData = JSON.parse(data);
+        return jsonData.login;
+    } catch (error) {
+
+        return null;
+    }
+}
+
+
+
+
 server.get("/main_page", (req, res) => {
-    res.render("main_page.pug")
+    res.render("main_page.pug", { login: get_login_from_json()})
 });
-
-
-
 
 
 server.listen(3000, () => {
