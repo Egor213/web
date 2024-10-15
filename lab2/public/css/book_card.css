@@ -1,0 +1,106 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки по умолчанию */
+    justify-items: center; /* Центрирование по горизонтали */
+    align-items: center; 
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 колонки на экранах до 1200px */
+    }
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на экранах до 900px */
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr; /* 1 колонка на экранах до 600px (выстраивание в колонну) */
+    }
+}
+
+
+.card-book {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #89663C; 
+    border-radius: 5px; 
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box; 
+    width: 300px;
+    height: 600px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #6a4e2c;
+}
+
+.img-card-book {
+    width: 280px;
+    height: 420px;
+    background: no-repeat;
+    background-size: 100% ;
+    flex-shrink: 0; 
+}
+
+.author-card-book,
+.title-card-book,
+.ret-date-card-book {
+    flex-shrink: 0; 
+}
+
+
+.author-card-book {
+    color: #EFD936;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.title-card-book {
+    font-weight: 700;
+    color: #111111;
+    font-size: 26px;
+    margin: 10px 0px;
+}
+
+.ret-date-card-book {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.buttons-card-book {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between; 
+    align-items: flex-end;
+     
+}
+
+.button-select-card-book input,  .button-delete-card-book input{
+    color: #F7FF8C;
+    background: none;
+    border: 1px solid #F7FF8C;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 100px;
+    height: 40px;
+}
+
+.button-select-card-book input:hover,  .button-delete-card-book input:hover{
+    color: #a6ac52;
+    border: 1px solid #a6ac52;
+    cursor: pointer;
+}
+
+.img-card-book {
+    font-size: 40px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+}

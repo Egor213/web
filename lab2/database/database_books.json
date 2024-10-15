@@ -4,14 +4,14 @@
     "author": "А. С. Пушкин",
     "owner": null,
     "date_return": null,
-    "img": null
+    "img": "../img_book/oneg.jpg"
   },
   "book 2": {
     "title": "Ревизор",
     "author": "Н. В. Гоголь",
     "owner": null,
     "date_return": null,
-    "img": null
+    "img": "../img_book/rev.jpg"
   },
   "book 3": {
     "title": "Капитанская дочка",
@@ -33,5 +33,33 @@
     "owner": null,
     "date_return": null,
     "img": null
+  },
+  "book 6": {
+    "title": "adventure2",
+    "author": "egor",
+    "owner": null,
+    "date_return": null,
+    "img": null
+  },
+  "book 7": {
+    "title": "adventure3",
+    "author": "egor",
+    "owner": null,
+    "date_return": "26.02.2005",
+    "img": "../img_book/rev.jpg"
+  },
+  "book 8": {
+    "title": "adventure4",
+    "author": "egor",
+    "owner": null,
+    "date_return": null,
+    "img": "../img_book/oneg.jpg"
+  },
+  "book 9": {
+    "title": "adventure5",
+    "author": "egor",
+    "owner": null,
+    "date_return": null,
+    "img": "../img_book/oneg.jpg"
   }
 }

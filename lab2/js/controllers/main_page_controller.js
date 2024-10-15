@@ -2,11 +2,11 @@ const database_book = require("../../database/database_books_controller");
 
 class MainPageController {
     addBook(req, res) {
-        const { title, author } = req.query;
+        const { title, author, img } = req.query;
         if (!title || !author) {
             return res.status(400).json({ error: 'Title и author не найдены или такая книга уже существует' });
         }
-        const book = database_book.addBook(title, author);
+        const book = database_book.addBook(title, author, img);
         if (book) {
             res.status(200).json({ message: "Книга создана"});
         } else {
