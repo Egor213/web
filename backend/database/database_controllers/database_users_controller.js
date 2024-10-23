@@ -17,18 +17,30 @@ class DatabaseUsersController {
         }
     }
 
-    getMaxId() {
-        const data = this.getArrData();
-        let max_id = 0;
-        for (let index in data) {
-            const id = data[index]['id'];
-            max_id = id > max_id ? id : max_id;
-        }
-        return max_id;
-    }
-
     getAllUsers() {
         return this.getArrData();
+    }
+
+    getIdFriendsUser(id) {
+        const data = this.getArrData();
+        for (let index in data) {
+            if (data[index].id == id) {
+                return data[index].friends;
+            }
+        }
+        return false;
+    }
+
+    getJSONFriendsUser(id) {
+        const data = this.getArrData();
+        const id_friends = this.getIdFriendsUser(id);
+        const dest_json = {};
+        for (let index in data) {
+            if (id_friends.includes(data[index].id)) {
+                dest_json.push(data[index])
+            }
+        }
+        return dest_json;
     }
 }
 module.exports = new DatabaseUsersController(path.join(__dirname, '..', 'database_json', 'users.json'));

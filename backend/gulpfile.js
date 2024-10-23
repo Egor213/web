@@ -8,6 +8,8 @@ const babel = require("gulp-babel");
 const clean_html = require("gulp-htmlmin");
 const fs_extra = require('fs-extra');
 const { series, parallel } = require('gulp');
+const { exec } = require('child_process');
+
 
 const OUTDIR = 'build';
 
@@ -21,16 +23,18 @@ const paths = {
         dest: path.join(__dirname, OUTDIR, 'html')
     },
     script: {
-        src_server: path.join(__dirname, 'js', '**', '*.js'),
+        src_server: [
+            path.join(__dirname, 'js', '**', '*.js'),
+            path.join(__dirname, 'app.js'),            
+            path.join(__dirname, 'database', '**', '*.js')
+        ],
         dest_server: path.join(__dirname, OUTDIR, 'js', 'server'),
-        src_client: path.join(__dirname, '..', 'frontend', 'public', 'frontend_js', '*.js'),
-        dest_client: path.join(__dirname, OUTDIR, 'js', 'client'),
-        src_app: path.join(__dirname, 'app.js'),
-        dest_app: path.join(__dirname, OUTDIR, 'js'),
-        src_database: path.join(__dirname, 'database', '**', '*.js'),
-        dest_database: path.join(__dirname, OUTDIR, 'js', 'server'),
-        src_static_server: path.join(__dirname, 'static', 'js_pug', '*.js'),
-        dest_static_server: path.join(__dirname, OUTDIR, 'js')
+        src_client: path.join(__dirname, 'static', 'js_pug', '*.js'),
+        dest_client: path.join(__dirname, OUTDIR, 'js', 'client')
+    },
+    db: {
+        original_path: path.join(__dirname, 'database', 'database_json', '*.json'),
+        copy_path: path.join(__dirname, OUTDIR, 'js', 'server', 'database_json'),
     }
 }
 
@@ -44,49 +48,27 @@ function render_style(callback) {
 
 function render_html(callback) {
     gulp.src(paths.html.src)
-        .pipe(pug({
-            data: {
-                DIR: OUTDIR
-            }
-        }))
+        .pipe(pug())
         .pipe(clean_html())
         .pipe(gulp.dest(paths.html.dest))  
     callback();
 }
 
 function render_scripts(callback) {
-    gulp.src(paths.script.src_client)
-        .pipe(babel({
-            presets: ['@babel/preset-env'] 
-        }))
-        // .pipe(concat('client.js'))
-        .pipe(gulp.dest(paths.script.dest_client)) 
     gulp.src(paths.script.src_server)
         .pipe(babel({
-            presets: ['@babel/preset-env'] 
+            presets: [
+                    ["@babel/preset-env"]
+                ]
         }))
-        // .pipe(concat('server.js'))
         .pipe(gulp.dest(paths.script.dest_server)) 
-    gulp.src(paths.script.src_database)
-        .pipe(babel({
-            presets: ['@babel/preset-env'] 
-        }))
-        // .pipe(concat('server.js'))
-        .pipe(gulp.dest(paths.script.dest_database)) 
-    gulp.src(paths.script.src_app)
-        .pipe(babel({
-            presets: ['@babel/preset-env'] 
-        }))
-        // .pipe(concat('app.js'))
-        .pipe(gulp.dest(paths.script.dest_app))  
-    gulp.src(paths.script.src_static_server)
+    gulp.src(paths.script.src_client)
         .pipe(babel({
             presets: [
-                ["@babel/preset-env"]
-            ]
+                    ["@babel/preset-env"]
+                ]
         }))
-        // .pipe(concat('index.js'))
-        .pipe(gulp.dest(paths.script.dest_static_server)) 
+        .pipe(gulp.dest(paths.script.dest_client))
     callback();
 }
 
@@ -95,9 +77,15 @@ function clean(callback) {
     callback();
 }
 
-function build(callback) {
-    return parallel(render_style, render_scripts, render_html)(callback);
+function copy_db() {
+    return gulp.src(paths.db.original_path) 
+        .pipe(gulp.dest(paths.db.copy_path)); 
 }
 
+function build(callback) {
+    return parallel(render_style, render_scripts, render_html, copy_db)(callback);
+}
+
+
 exports.default = series(clean, build);
-gulp.watch(["./styles/**/*.less", "./views/**/*.pug", "./js/**/*.js"], build);
+gulp.watch(["./styles/**/*.less", "./views/**/*.pug", "./js/**/**/*.js", "./app.js", "./database/**/*", "./static/**/*.js"], build);

@@ -26,7 +26,7 @@ class DatabaseNewsController {
     getNewsById(id) {
         const data = this.getArrData();
         for (let index in data) {
-            if (id == data[index])
+            if (id == data[index].id)
                 return data[index];
         }
         return false;

@@ -2,11 +2,10 @@ const express = require("express");
 const server = express();
 const path = require('path');
 
-const router = require(path.join(__dirname, "js", "routers", "index.js"));
+const router = require(path.join(__dirname, "routers", "index.js"));
 const body_parser = require("body-parser");
 
-// server.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'public')))
-server.use(express.static(path.join(__dirname, 'static')))
+server.use(express.static(path.join(__dirname, '..', 'client')))
 server.use(express.json());
 server.use(body_parser.urlencoded({ extended: true }));
 
@@ -16,7 +15,10 @@ server.set("view engine", "pug");
 server.set("views", path.join(__dirname, "views"));
 
 server.get("/", (req, res) => {
-    res.render("index.pug");
+    res.sendFile(path.join(__dirname, '..', '..', 'html', 'index.html'));
+});
+server.get("/user/news/:id", (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'html', 'user_page.html'));
 });
 
 
