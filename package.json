@@ -1,0 +1,38 @@
+{
+  "name": "lab3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/build/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.25.9",
+    "babel": "^6.23.0",
+    "body-parser": "^1.20.3",
+    "bootstrap": "^5.3.3",
+    "express": "^4.21.1",
+    "fs-extra": "^11.2.0",
+    "gulp": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-less": "^5.0.0",
+    "gulp-pug": "^5.0.0",
+    "nodemon": "^3.1.7",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.8",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.25.8",
+    "@babel/register": "^7.25.7",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
