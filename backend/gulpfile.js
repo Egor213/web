@@ -10,13 +10,14 @@ const fs_extra = require('fs-extra');
 const { series, parallel } = require('gulp');
 const { exec } = require('child_process');
 
+const db_users = require(path.join(__dirname, 'database','database_controllers', 'database_users_controller'));
 
 const OUTDIR = 'build';
 
 const paths = {
     styles: {
         src: path.join(__dirname, 'styles', '*.less'),
-        dest: path.join(__dirname, OUTDIR, 'style')
+        dest: path.join(__dirname, OUTDIR, 'client', 'style')
     },
     html: {
         src: path.join(__dirname, 'views', '*.pug'),
@@ -28,13 +29,13 @@ const paths = {
             path.join(__dirname, 'app.js'),            
             path.join(__dirname, 'database', '**', '*.js')
         ],
-        dest_server: path.join(__dirname, OUTDIR, 'js', 'server'),
+        dest_server: path.join(__dirname, OUTDIR, 'server'),
         src_client: path.join(__dirname, 'static', 'js_pug', '*.js'),
-        dest_client: path.join(__dirname, OUTDIR, 'js', 'client')
+        dest_client: path.join(__dirname, OUTDIR, 'client')
     },
     db: {
         original_path: path.join(__dirname, 'database', 'database_json', '*.json'),
-        copy_path: path.join(__dirname, OUTDIR, 'js', 'server', 'database_json'),
+        copy_path: path.join(__dirname, OUTDIR, 'server', 'database_json'),
     }
 }
 
@@ -46,11 +47,14 @@ function render_style(callback) {
     callback();
 }
 
+
 function render_html(callback) {
     gulp.src(paths.html.src)
-        .pipe(pug())
+        .pipe(pug({
+            locals: {users:db_users.getAllUsers()}
+        }))
         .pipe(clean_html())
-        .pipe(gulp.dest(paths.html.dest))  
+        .pipe(gulp.dest(paths.html.dest)) 
     callback();
 }
 

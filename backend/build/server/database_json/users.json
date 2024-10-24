@@ -1,0 +1,74 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Egor",
+            "date": "26.02.2005",
+            "friends": [2, 3, 4, 5],
+            "role": "Администратор",
+            "status": "Активный",
+            "email": "zamok7707@gmail.com",
+            "img": null
+        },
+        {
+            "id": 2,
+            "name": "Slavik",
+            "date": "16.05.2004",
+            "friends": [3, 5],
+            "role": "Пользователь",
+            "status": "Активный",
+            "email": "slavik2004@gmail.com",
+            "img": null
+        },
+        {
+            "id": 3,
+            "name": "Valeros",
+            "date": "09.05.1996",
+            "friends": [1, 2],
+            "role": "Пользователь",
+            "status": "Заблокированный",
+            "email": "valeros@gmail.com",
+            "img": null
+        },
+        {
+            "id": 4,
+            "name": "Petrusok",
+            "date": "01.04.2009",
+            "friends": [5],
+            "role": "Пользователь",
+            "status": "Подтвержденный",
+            "email": "petrone@gmail.com",
+            "img": null
+        },
+        {
+            "id": 5,
+            "name": "Alexandr",
+            "date": "31.12.2006",
+            "friends": null,
+            "role": "Пользователь",
+            "status": "Заблокированный",
+            "email": "sashok@gmail.com",
+            "img": null
+        },
+        {
+            "id": 6,
+            "name": "Olega",
+            "date": "15.11.2003",
+            "friends": [1, 2, 3, 4, 5],
+            "role": "Администратор",
+            "status": "Активный",
+            "email": "olegator@gmail.com",
+            "img": null
+        },
+        {
+            "id": 7,
+            "name": "Vovchik",
+            "date": "14.01.2007",
+            "friends": [1, 2, 4],
+            "role": "Пользователь",
+            "status": "Активный",
+            "email": "vovakryt2015@gmail.com",
+            "img": null
+        }
+    ]
+}

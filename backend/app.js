@@ -15,10 +15,10 @@ server.set("view engine", "pug");
 server.set("views", path.join(__dirname, "views"));
 
 server.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '..', 'html', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'html', 'index.html'));
 });
 server.get("/user/news/:id", (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '..', 'html', 'user_page.html'));
+    res.sendFile(path.join(__dirname, '..', 'html', 'user_page.html'));
 });
 
 
