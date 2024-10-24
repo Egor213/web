@@ -10,17 +10,7 @@ html
       h1 Список пользователей
     div.container
       div.row#users
-        each user in users 
-          div.col-sm-12.col-md-6.col-lg-4.d-flex.justify-content-center
-            div.card.m-2.w-100
-              div.card-body
-                h4.card-title Пользователь #{user.id}
-                p.card-text Имя: #{user.name}
-                p.card-text Дата рождения: #{user.date}
-                p.card-text email: #{user.email}
-                p.card-text Роль: #{user.role}
-                p.card-text Статус: #{user.status}
-                a.btn.btn-secondary(href=`/user/friends/${user.id}`) Подробнее
+  
 
 
     script(src="/index.js")

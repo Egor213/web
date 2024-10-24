@@ -10,7 +10,7 @@ const fs_extra = require('fs-extra');
 const { series, parallel } = require('gulp');
 const { exec } = require('child_process');
 
-const db_users = require(path.join(__dirname, 'database','database_controllers', 'database_users_controller'));
+
 
 const OUTDIR = 'build';
 
@@ -50,9 +50,7 @@ function render_style(callback) {
 
 function render_html(callback) {
     gulp.src(paths.html.src)
-        .pipe(pug({
-            locals: {users:db_users.getAllUsers()}
-        }))
+        .pipe(pug())
         .pipe(clean_html())
         .pipe(gulp.dest(paths.html.dest)) 
     callback();

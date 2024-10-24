@@ -12,7 +12,7 @@ html
         a.nav-link(aria-current="page", href="#") Новости друзей
       li.nav-item
         a.nav-link.active(href="#") Друзья
-      li.nav-item
+      li.nav-item#test
         a.nav-link(href="#") Редактировать профиль
     .d-flex.justify-content-center
       .card-custom-width
@@ -20,13 +20,9 @@ html
           span#user-title
     .containter
       .row#user
-          
-            
-        
-
-
-
-       
-
-
+    
+    include feature/return_button.pug
+  
     script(src="/user.js")
+    script(src="/test.js")
+

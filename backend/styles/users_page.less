@@ -20,17 +20,17 @@
 
 
 .navig-div {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000; 
     background: #b4b4b480;
 
-
+    
     .nav-link {
         padding: 15px 30px; 
-        font-size: 18px; 
+        .resize-font(18px);
         font-weight: 500;
     }
 }
@@ -57,13 +57,13 @@
 
 
 body {
-    padding-top: 70px;
+    // padding-top: 70px;
     overflow-x: hidden;
 }
 
 @media (max-width: @m-window) {
     .min-nav-size();
-    body {
-        padding-top: 160px;
-    }
+    // body {
+    //     padding-top: 160px;
+    // }
 }
