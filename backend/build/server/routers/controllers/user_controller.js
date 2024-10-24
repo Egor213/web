@@ -35,7 +35,22 @@ var UserController = /*#__PURE__*/function () {
     }
   }, {
     key: "renderUserFriends",
-    value: function renderUserFriends(req, res) {}
+    value: function renderUserFriends(req, res) {
+      var user_id = req.params.id;
+      var data = db_users.getJSONFriendsUser(user_id);
+      if (data) res.status(200).json(data);else res.status(404).json({
+        error: "Друзья не найдены"
+      });
+    }
+  }, {
+    key: "renderUserName",
+    value: function renderUserName(req, res) {
+      var user_id = req.params.id;
+      var data = db_users.getNameUser(user_id);
+      if (data) res.status(200).json(data);else res.status(404).json({
+        error: "Пользователь не найден"
+      });
+    }
   }]);
 }();
 module.exports = new UserController();

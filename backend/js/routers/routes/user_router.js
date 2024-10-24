@@ -5,5 +5,7 @@ const user_controller = require(path.join(__dirname, '..', 'controllers', 'user_
 
 router.get('/news/:id', user_controller.renderUserNews);
 router.get('/friends/:id', user_controller.renderUserFriends);
+router.get('/get_name/:id', user_controller.renderUserName);
+
 
 module.exports = router;

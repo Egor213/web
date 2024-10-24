@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    include headers/meta.pug
+    include headers/links.pug
+    include headers/scripts.pug
+    link(rel='stylesheet', href='/style/users_page.css')
+    title User
+  body    
+    ul.nav.nav-pills.mb-2.justify-content-center.navig-div.p-2
+      li.nav-item
+        a.nav-link(aria-current="page", href="#") Новости друзей
+      li.nav-item
+        a.nav-link.active(href="#") Друзья
+      li.nav-item
+        a.nav-link(href="#") Редактировать профиль
+    .d-flex.justify-content-center
+      .card-custom-width
+        h2 Пользователь: 
+          span#user-title
+    .containter
+      .row#user
+          
+            
+        
+
+
+
+       
+
+
+    script(src="/user.js")

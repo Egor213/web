@@ -24,7 +24,7 @@
             "id": 3,
             "name": "Valeros",
             "date": "09.05.1996",
-            "friends": [1, 2],
+            "friends": [1, 2, 8],
             "role": "Пользователь",
             "status": "Заблокированный",
             "email": "valeros@gmail.com",
@@ -68,6 +68,16 @@
             "role": "Пользователь",
             "status": "Активный",
             "email": "vovakryt2015@gmail.com",
+            "img": null
+        },
+        {
+            "id": 8,
+            "name": "Sergey RING",
+            "date": "01.01.2004",
+            "friends": [1, 2, 3, 4, 5, 6, 7],
+            "role": "Администратор",
+            "status": "Активный",
+            "email": "GamerELDErRINg@gmail.com",
             "img": null
         }
     ]

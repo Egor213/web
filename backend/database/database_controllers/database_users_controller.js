@@ -21,20 +21,35 @@ class DatabaseUsersController {
         return this.getArrData();
     }
 
-    getIdFriendsUser(id) {
+    getUserById(id) {
         const data = this.getArrData();
         for (let index in data) {
-            if (data[index].id == id) {
-                return data[index].friends;
-            }
+            if (data[index].id == id) 
+                return data[index];
         }
+        return false;
+    }
+
+    getIdFriendsUser(id) {
+        const user = this.getUserById(id);
+        if (user)
+            return user.friends;
+        return false;
+    }
+
+    getNameUser(id) {
+        const user = this.getUserById(id);
+        if (user)
+            return user.name;
         return false;
     }
 
     getJSONFriendsUser(id) {
         const data = this.getArrData();
         const id_friends = this.getIdFriendsUser(id);
-        const dest_json = {};
+        if (!id_friends)
+            return false;
+        const dest_json = [];
         for (let index in data) {
             if (id_friends.includes(data[index].id)) {
                 dest_json.push(data[index])

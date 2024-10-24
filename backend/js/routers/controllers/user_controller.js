@@ -22,7 +22,21 @@ class UserController {
     }
 
     renderUserFriends(req, res) {
+        const user_id = req.params.id;
+        const data = db_users.getJSONFriendsUser(user_id);
+        if (data)
+            res.status(200).json(data);
+        else
+            res.status(404).json({error: "Друзья не найдены"});
+    }
 
+    renderUserName(req, res) {
+        const user_id = req.params.id;
+        const data = db_users.getNameUser(user_id);
+        if (data)
+            res.status(200).json(data);
+        else
+            res.status(404).json({error: "Пользователь не найден"});
     }
 }
 

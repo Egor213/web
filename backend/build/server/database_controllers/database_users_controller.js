@@ -33,14 +33,26 @@ var DatabaseUsersController = /*#__PURE__*/function () {
       return this.getArrData();
     }
   }, {
-    key: "getIdFriendsUser",
-    value: function getIdFriendsUser(id) {
+    key: "getUserById",
+    value: function getUserById(id) {
       var data = this.getArrData();
       for (var index in data) {
-        if (data[index].id == id) {
-          return data[index].friends;
-        }
+        if (data[index].id == id) return data[index];
       }
+      return false;
+    }
+  }, {
+    key: "getIdFriendsUser",
+    value: function getIdFriendsUser(id) {
+      var user = this.getUserById(id);
+      if (user) return user.friends;
+      return false;
+    }
+  }, {
+    key: "getNameUser",
+    value: function getNameUser(id) {
+      var user = this.getUserById(id);
+      if (user) return user.name;
       return false;
     }
   }, {
@@ -48,7 +60,8 @@ var DatabaseUsersController = /*#__PURE__*/function () {
     value: function getJSONFriendsUser(id) {
       var data = this.getArrData();
       var id_friends = this.getIdFriendsUser(id);
-      var dest_json = {};
+      if (!id_friends) return false;
+      var dest_json = [];
       for (var index in data) {
         if (id_friends.includes(data[index].id)) {
           dest_json.push(data[index]);
