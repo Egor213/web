@@ -16,6 +16,7 @@ server.use('/api', router);
 server.set("view engine", "pug");
 server.set("views", path.join(__dirname, "views"));
 
+//Main routes
 server.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'html', 'index.html'));
 });
@@ -23,6 +24,14 @@ server.get("/", (req, res) => {
 
 server.get("/user/friends/:id", user_checker, (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'html', 'user_page_friends.html'));
+});
+
+server.get("/user/news/:id", user_checker, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'html', 'user_page_news.html'));
+});
+
+server.get("/user/redact/:id", user_checker, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'html', 'user_page_redact.html'));
 });
 
 

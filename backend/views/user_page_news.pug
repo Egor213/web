@@ -4,9 +4,9 @@ html
     include headers/meta.pug
     include headers/links.pug
     include headers/scripts.pug
-    link(rel='stylesheet', href='/style/users_page_friends.css')
+    link(rel='stylesheet', href='/style/users_page_news.css')
     title User
-  body
+  body    
     style. 
       .nav-link {
         cursor: pointer;
@@ -14,19 +14,15 @@ html
 
     ul.nav.nav-pills.mb-2.justify-content-center.navig-div.p-2
       li.nav-item
-        a.nav-link#news Новости друзей
-      li.nav-item
-        a.nav-link.active Друзья
+        a.nav-link.active Новости друзей
+      li.nav-item#friends
+        a.nav-link Друзья
       li.nav-item#redact
         a.nav-link Редактировать профиль
     .d-flex.justify-content-center
       .card-custom-width
         h2 Пользователь: 
           span#user-title
-    .containter
-      .row#user
-    
-    include feature/return_button.pug
-  
-    script(src="/user_friends.js")
 
+    include feature/return_button.pug
+    script(src="/user_news.js")
