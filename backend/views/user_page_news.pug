@@ -5,7 +5,7 @@ html
     include headers/links.pug
     include headers/scripts.pug
     link(rel='stylesheet', href='/style/users_page_news.css')
-    title User
+    title News
   body    
     style. 
       .nav-link {
@@ -23,6 +23,8 @@ html
       .card-custom-width
         h2 Пользователь: 
           span#user-title
+    .containter
+      .row#news
 
     include feature/return_button.pug
     script(src="/user_news.js")

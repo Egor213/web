@@ -3,6 +3,24 @@
 @m-window: 590px;
 @s-window: 450px;
 
+.card-custom-width {
+    width: 50%; 
+  
+    @media (max-width: @ll-window) {
+      width: 60%;
+    }
+    @media (max-width: @l-window) {
+      width: 70%;
+    }
+    @media (max-width: @m-window) {
+      width: 80%;
+    }
+    @media (max-width: @s-window) {
+      width: 90%;
+    }
+  }
+  
+
 .resize-font(@size) {
     font-size: @size;
 }
@@ -15,6 +33,13 @@
         flex-direction: column; 
     }
 }
+
+#user-title {
+    display: inline-block;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
 
 
 

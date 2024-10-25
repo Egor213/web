@@ -4,10 +4,10 @@ function get_id_by_url() {
     return segments[segments.length - 1];
 }
 
-$(document).ready(() => {
+function main() {
     render_friends_user();
     render_name_user();
-})
+}
 
 
 $('#news').on('click', function() {
@@ -27,10 +27,13 @@ function render_friends_user() {
     $.get(`/api/user/friends/${id}`, function(response) {
         add_friends(response);
     }).fail(function(res) {
-        $('#user').append(`
+        $('#user').append(
+            `
             <div class="col-12 d-flex justify-content-center">
-                <h2 class="card-title">Друзей не найдено</h2>
-            </div>`);
+                <h2>Друзей не найдено</h2>
+            </div>
+            `
+        );
     });
 }
 
@@ -66,3 +69,8 @@ function add_friends(friends) {
     }
 }
 
+
+
+
+
+main(); 

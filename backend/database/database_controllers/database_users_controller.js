@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { json } = require('body-parser');
 const path = require('path');
+const db_news = require(path.join(__dirname, 'database_news_controller'))
 class DatabaseUsersController {
     constructor(path_database) {
         this.path = path_database;
@@ -56,6 +57,19 @@ class DatabaseUsersController {
             }
         }
         return dest_json;
+    }
+
+    getNewsFriends(id) {
+        const friends = this.getIdFriendsUser(id);
+        const temp_json = [];
+        for (let index in friends) {
+            const data = db_news.getNewsById(friends[index]);
+            if (data) {
+                data.name = this.getNameUser(friends[index]);
+                temp_json.push(data); 
+            }
+        }
+        return temp_json;
     }
 }
 module.exports = new DatabaseUsersController(path.join(__dirname, '..', 'database_json', 'users.json'));

@@ -15,10 +15,12 @@ $('#redact').on('click', function(){
     window.location.href = `/user/redact/${id}`;
 })
 
-$(document).ready(() => {
-    // render_friends_user();
+
+function main() {
     render_name_user();
-})
+    render_news_user();
+}
+
 
 function add_name_user(name) {
     $("#user-title").text(name);
@@ -32,5 +34,36 @@ function render_name_user() {
 }
 
 
+function render_news_user() {
+    const id = get_id_by_url();
+    $.get(`/api/user/news/${id}`, function(response) {
+        add_all_news(response);
+    });
+}
 
 
+function add_all_news(all_news) {
+    for (let news of all_news) {
+        for (let element of news.posts) {
+            add_news_user(news.name, element);
+        }
+    }
+}
+
+function add_news_user(name, news) {
+    let data = `
+        <div class="col-12 d-flex justify-content-center">
+            <div class="card m-2 card-custom-width">
+                <div class="card-body">
+                    <h2 class="card-title">Пользователь: ${name}</h2>
+                    <p class="card-text">${news}</p>
+                </div>
+            </div>
+        </div>
+    `
+    $('#news').append(data);
+}
+
+
+main();
+                            

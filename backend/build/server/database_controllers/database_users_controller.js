@@ -10,6 +10,7 @@ var fs = require('fs');
 var _require = require('body-parser'),
   json = _require.json;
 var path = require('path');
+var db_news = require(path.join(__dirname, 'database_news_controller'));
 var DatabaseUsersController = /*#__PURE__*/function () {
   function DatabaseUsersController(path_database) {
     _classCallCheck(this, DatabaseUsersController);
@@ -68,6 +69,20 @@ var DatabaseUsersController = /*#__PURE__*/function () {
         }
       }
       return dest_json;
+    }
+  }, {
+    key: "getNewsFriends",
+    value: function getNewsFriends(id) {
+      var friends = this.getIdFriendsUser(id);
+      var temp_json = [];
+      for (var index in friends) {
+        var data = db_news.getNewsById(friends[index]);
+        if (data) {
+          data.name = this.getNameUser(friends[index]);
+          temp_json.push(data);
+        }
+      }
+      return temp_json;
     }
   }]);
 }();

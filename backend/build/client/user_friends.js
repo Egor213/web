@@ -8,10 +8,10 @@ function get_id_by_url() {
   var segments = url.split('/');
   return segments[segments.length - 1];
 }
-$(document).ready(function () {
+function main() {
   render_friends_user();
   render_name_user();
-});
+}
 $('#news').on('click', function () {
   var id = get_id_by_url();
   window.location.href = "/user/news/".concat(id);
@@ -25,7 +25,7 @@ function render_friends_user() {
   $.get("/api/user/friends/".concat(id), function (response) {
     add_friends(response);
   }).fail(function (res) {
-    $('#user').append("\n            <div class=\"col-12 d-flex justify-content-center\">\n                <h2 class=\"card-title\">\u0414\u0440\u0443\u0437\u0435\u0439 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E</h2>\n            </div>");
+    $('#user').append("\n            <div class=\"col-12 d-flex justify-content-center\">\n                <h2>\u0414\u0440\u0443\u0437\u0435\u0439 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E</h2>\n            </div>\n            ");
   });
 }
 function render_name_user() {
@@ -52,3 +52,4 @@ function add_friends(friends) {
     _iterator.f();
   }
 }
+main();

@@ -13,10 +13,14 @@ $('#news').on('click', function () {
   var id = get_id_by_url();
   window.location.href = "/user/news/".concat(id);
 });
-$(document).ready(function () {
-  // render_friends_user();
+
+// $(document).ready(() => {
+//     // render_friends_user();
+//     render_name_user();
+// })
+function main() {
   render_name_user();
-});
+}
 function add_name_user(name) {
   $("#user-title").text(name);
 }
@@ -26,3 +30,4 @@ function render_name_user() {
     add_name_user(response);
   });
 }
+main();
