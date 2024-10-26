@@ -1,6 +1,8 @@
 const express = require("express");
 const server = express();
 const path = require('path');
+const fs = require("fs");
+const {createServer} = require("https");
 
 const router = require(path.join(__dirname, "routers", "index.js"));
 const body_parser = require("body-parser");
@@ -16,6 +18,12 @@ server.use('/api', router);
 
 server.set("view engine", "pug");
 server.set("views", path.join(__dirname, "views"));
+
+
+const https_options = {
+    key: fs.readFileSync(path.join(__dirname, '..', '..', 'cert', 'test.key'), 'utf-8'),
+    cert: fs.readFileSync(path.join(__dirname, '..', '..', 'cert', 'test.crt'), 'utf-8')
+};
 
 //Main routes
 server.get("/", (req, res) => {
@@ -36,6 +44,8 @@ server.get("/user/redact/:id", user_checker, (req, res) => {
 });
 
 
-server.listen(3000, () => {
+const SERVER = createServer(https_options, server);
+
+SERVER.listen(3000, () => {
     console.log("Сервер запущен на 3000 порту");
 })
