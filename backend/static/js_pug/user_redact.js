@@ -37,6 +37,7 @@ function render_information() {
     const id = get_id_by_url();
     $.get(`/api/user/get_info_user/${id}`, function(response) {
         let user = `
+            <img src="${response.img}" alt="Фото пользователя" width="256" height="256" class="mb-2">
             <h5> id: ${response.id} </h5>
             <h5 id='name'> Name: ${response.name} </h5>
             <h5 id='date'> Date: ${response.date} </h5>

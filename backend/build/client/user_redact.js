@@ -36,7 +36,7 @@ function render_name_user() {
 function render_information() {
   var id = get_id_by_url();
   $.get("/api/user/get_info_user/".concat(id), function (response) {
-    var user = "\n            <h5> id: ".concat(response.id, " </h5>\n            <h5 id='name'> Name: ").concat(response.name, " </h5>\n            <h5 id='date'> Date: ").concat(response.date, " </h5>\n            <h5 id='email'> Email: ").concat(response.email, " </h5>\n            <h5 id='role'> Role: ").concat(response.role, " </h5>\n            <h5 id='status'> Status: ").concat(response.status, " </h5>\n        ");
+    var user = "\n            <img src=\"".concat(response.img, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\" width=\"256\" height=\"256\" class=\"mb-2\">\n            <h5> id: ").concat(response.id, " </h5>\n            <h5 id='name'> Name: ").concat(response.name, " </h5>\n            <h5 id='date'> Date: ").concat(response.date, " </h5>\n            <h5 id='email'> Email: ").concat(response.email, " </h5>\n            <h5 id='role'> Role: ").concat(response.role, " </h5>\n            <h5 id='status'> Status: ").concat(response.status, " </h5>\n        ");
     $('#info').append(user);
   });
 }

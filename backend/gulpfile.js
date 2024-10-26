@@ -36,6 +36,10 @@ const paths = {
     db: {
         original_path: path.join(__dirname, 'database', 'database_json', '*.json'),
         copy_path: path.join(__dirname, OUTDIR, 'server', 'database_json'),
+    },
+    img: {
+        original_path: path.join(__dirname, 'static', 'img', '*'),
+        copy_path: path.join(__dirname, OUTDIR, 'client', 'img'),
     }
 }
 

@@ -7,7 +7,8 @@ const body_parser = require("body-parser");
 
 const user_checker = require(path.join(__dirname, 'middleware', 'user_checker.js'))
 
-server.use(express.static(path.join(__dirname, '..', 'client')))
+server.use('/', express.static(path.join(__dirname, '..', 'client')))
+server.use('/st2', express.static(path.join(__dirname, '..', '..', 'static')));
 server.use(express.json());
 server.use(body_parser.urlencoded({ extended: true }));
 

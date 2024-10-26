@@ -8,7 +8,7 @@
             "role": "Администратор",
             "status": "Активный",
             "email": "zamok7707@gmail.com",
-            "img": null
+            "img": "/st2/img/img1.jfif"
         },
         {
             "id": 2,
@@ -18,7 +18,7 @@
             "role": "Пользователь",
             "status": "Активный",
             "email": "slavik2004@gmail.com",
-            "img": null
+            "img": "/st2/img/img2.jfif"
         },
         {
             "id": 3,
@@ -28,7 +28,7 @@
             "role": "Пользователь",
             "status": "Заблокированный",
             "email": "valeros@gmail.com",
-            "img": null
+            "img": "/st2/img/img3.jfif"
         },
         {
             "id": 4,
@@ -38,7 +38,7 @@
             "role": "Пользователь",
             "status": "Подтвержденный",
             "email": "petrone@gmail.com",
-            "img": null
+            "img": "/st2/img/img4.jfif"
         },
         {
             "id": 5,
@@ -48,7 +48,7 @@
             "role": "Пользователь",
             "status": "Заблокированный",
             "email": "sashok@gmail.com",
-            "img": null
+            "img": "/st2/img/img5.jfif"
         },
         {
             "id": 6,
@@ -58,7 +58,7 @@
             "role": "Администратор",
             "status": "Активный",
             "email": "olegator@gmail.com",
-            "img": null
+            "img": "/st2/img/img6.jfif"
         },
         {
             "id": 7,
@@ -68,7 +68,7 @@
             "role": "Пользователь",
             "status": "Активный",
             "email": "vovakryt2015@gmail.com",
-            "img": null
+            "img": "/st2/img/img7.jfif"
         },
         {
             "id": 8,
@@ -78,7 +78,7 @@
             "role": "Администратор",
             "status": "Активный",
             "email": "GamerELDErRINg@gmail.com",
-            "img": null
+            "img": "/st2/img/img8.jfif"
         }
     ]
 }
