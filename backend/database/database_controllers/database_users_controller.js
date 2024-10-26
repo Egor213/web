@@ -59,6 +59,13 @@ class DatabaseUsersController {
         return dest_json;
     }
 
+    getImgUser(id) {
+        const user = this.getUserById(id);
+        if (user)
+            return user.img;
+        return false;
+    }
+
     getNewsFriends(id) {
         const friends = this.getIdFriendsUser(id);
         const temp_json = [];
@@ -66,6 +73,7 @@ class DatabaseUsersController {
             const data = db_news.getNewsById(friends[index]);
             if (data) {
                 data.name = this.getNameUser(friends[index]);
+                data.img = this.getImgUser(friends[index]);
                 temp_json.push(data); 
             }
         }
@@ -86,7 +94,6 @@ class DatabaseUsersController {
     }
 
     isValidDate(date_string) {
-        // const regex = /^\d{2}\.\d{2}\.\d{4}$/;
         const regex = /^\d{4}\-\d{2}\-\d{2}$/;
         if (!regex.test(date_string)) {
             return false;

@@ -39,9 +39,9 @@ function render_information() {
         let user = `
             <img src="${response.img}" alt="Фото пользователя" width="256" height="256" class="mb-2">
             <h5> id: ${response.id} </h5>
-            <h5 id='name'> Name: ${response.name} </h5>
+            <h5 id='name' class='break-word'> Name: ${response.name} </h5>
             <h5 id='date'> Date: ${response.date} </h5>
-            <h5 id='email'> Email: ${response.email} </h5>
+            <h5 id='email' class='break-word'> Email: ${response.email} </h5>
             <h5 id='role'> Role: ${response.role} </h5>
             <h5 id='status'> Status: ${response.status} </h5>
         `
@@ -94,6 +94,8 @@ function change_params() {
 function set_new_info(form_data) {
     for (let key in form_data) {
         if (form_data[key] && key !== "id") {
+            if (key == 'name')
+                $($("#user-title")).text(`${form_data[key]}`)
             if (key == 'date')
                 $(`#${key}`).text(`${key.charAt(0).toUpperCase() + key.slice(1)}: ${reform_date(form_data[key])}`)
             else

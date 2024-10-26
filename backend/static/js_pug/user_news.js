@@ -53,17 +53,18 @@ function render_news_user() {
 function add_all_news(all_news) {
     for (let news of all_news) {
         for (let element of news.posts) {
-            add_news_user(news.name, element);
+            add_news_user(news.name, element, news.img);
         }
     }
 }
 
-function add_news_user(name, news) {
+function add_news_user(name, news, img) {
     let data = `
         <div class="col-12 d-flex justify-content-center">
             <div class="card m-2 card-custom-width">
                 <div class="card-body">
-                    <h2 class="card-title">Пользователь: ${name}</h2>
+                    <img src="${img}" alt="Фото пользователя" width="48" height="48" class="mb-2">
+                    <h2 class="card-title">${name}</h2>
                     <p class="card-text">${news}</p>
                 </div>
             </div>

@@ -48,7 +48,7 @@ function add_all_news(all_news) {
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var element = _step2.value;
-          add_news_user(news.name, element);
+          add_news_user(news.name, element, news.img);
         }
       } catch (err) {
         _iterator2.e(err);
@@ -62,8 +62,8 @@ function add_all_news(all_news) {
     _iterator.f();
   }
 }
-function add_news_user(name, news) {
-  var data = "\n        <div class=\"col-12 d-flex justify-content-center\">\n            <div class=\"card m-2 card-custom-width\">\n                <div class=\"card-body\">\n                    <h2 class=\"card-title\">\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C: ".concat(name, "</h2>\n                    <p class=\"card-text\">").concat(news, "</p>\n                </div>\n            </div>\n        </div>\n    ");
+function add_news_user(name, news, img) {
+  var data = "\n        <div class=\"col-12 d-flex justify-content-center\">\n            <div class=\"card m-2 card-custom-width\">\n                <div class=\"card-body\">\n                    <img src=\"".concat(img, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\" width=\"48\" height=\"48\" class=\"mb-2\">\n                    <h2 class=\"card-title\">").concat(name, "</h2>\n                    <p class=\"card-text\">").concat(news, "</p>\n                </div>\n            </div>\n        </div>\n    ");
   $('#news').append(data);
 }
 main();

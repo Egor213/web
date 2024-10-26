@@ -74,6 +74,13 @@ var DatabaseUsersController = /*#__PURE__*/function () {
       return dest_json;
     }
   }, {
+    key: "getImgUser",
+    value: function getImgUser(id) {
+      var user = this.getUserById(id);
+      if (user) return user.img;
+      return false;
+    }
+  }, {
     key: "getNewsFriends",
     value: function getNewsFriends(id) {
       var friends = this.getIdFriendsUser(id);
@@ -82,6 +89,7 @@ var DatabaseUsersController = /*#__PURE__*/function () {
         var data = db_news.getNewsById(friends[index]);
         if (data) {
           data.name = this.getNameUser(friends[index]);
+          data.img = this.getImgUser(friends[index]);
           temp_json.push(data);
         }
       }
@@ -104,7 +112,6 @@ var DatabaseUsersController = /*#__PURE__*/function () {
   }, {
     key: "isValidDate",
     value: function isValidDate(date_string) {
-      // const regex = /^\d{2}\.\d{2}\.\d{4}$/;
       var regex = /^\d{4}\-\d{2}\-\d{2}$/;
       if (!regex.test(date_string)) {
         return false;

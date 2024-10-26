@@ -54,6 +54,7 @@ function add_friends(friends) {
             <div class="col-12 d-flex justify-content-center">
                 <div class="card m-2 card-custom-width">
                     <div class="card-body">
+                        <img src="${friend['img']}" alt="Фото пользователя" width="128" height="128" class="mb-2">
                         <h2 class="card-title">Имя: ${friend['name']}</h2>
                         <p class="card-text">Дата рождения: ${friend['date']}</p>
                         <p class="card-text">Почтовый адрес: ${friend['email']}</p>
