@@ -38,6 +38,14 @@ function render_news_user() {
     const id = get_id_by_url();
     $.get(`/api/user/news/${id}`, function(response) {
         add_all_news(response);
+    }).fail(function(res) {
+        $('#news').append(
+            `
+            <div class="col-12 d-flex justify-content-center">
+                <h2>Новости не найдены</h2>
+            </div>
+            `
+        );
     });
 }
 

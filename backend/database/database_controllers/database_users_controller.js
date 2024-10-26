@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { json } = require('body-parser');
 const path = require('path');
-const db_news = require(path.join(__dirname, 'database_news_controller'))
+const db_news = require(path.join(__dirname, 'database_news_controller'));
 class DatabaseUsersController {
     constructor(path_database) {
         this.path = path_database;
@@ -19,7 +19,7 @@ class DatabaseUsersController {
     }
 
     getAllUsers() {
-        return this.getArrData();
+        return this.getArrData();   
     }
 
     getUserById(id) {
@@ -70,6 +70,65 @@ class DatabaseUsersController {
             }
         }
         return temp_json;
+    }
+
+    saveJsonData(json_data) {
+        try {
+            const data = {
+                users: json_data
+            }
+            fs.writeFileSync(this.path, JSON.stringify(data, null, 2), 'utf8');
+            return true;
+        } catch (err) {
+            console.error('Ошибка при сохранении данных:', err);
+            return false;
+        }
+    }
+
+    isValidDate(date_string) {
+        // const regex = /^\d{2}\.\d{2}\.\d{4}$/;
+        const regex = /^\d{4}\-\d{2}\-\d{2}$/;
+        if (!regex.test(date_string)) {
+            return false;
+        }
+
+        const parts = date_string.split('-');
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10);
+        const day = parseInt(parts[2], 10);
+        if (month < 1 || month > 12)
+            return false;
+        const days_in_month = new Date(year, month, 0).getDate();
+        return day > 0 && day <= days_in_month && year < 2024 && year > 1850;
+    }
+
+    changeParam(value_obj, id) { 
+        if (!value_obj || !id) {
+            console.error('Неверное значение value: ', value_obj, " id: ", id);
+            return false;
+        }
+        const data = this.getArrData();
+        for (let user of data) {
+            if (user.id == id) {
+                for (let key in value_obj) {
+                    if (value_obj[key]) {
+                        console.log(value_obj[key])
+                        if (key === 'date')
+                            if (this.isValidDate(value_obj[key]))
+                                user[key] = value_obj[key]
+                            else
+                                return false;
+                        else
+                            user[key] = value_obj[key]
+                    }
+                        
+                }
+                if (this.saveJsonData(data))
+                    return true;
+            }
+        }
+        return false
+        
     }
 }
 module.exports = new DatabaseUsersController(path.join(__dirname, '..', 'database_json', 'users.json'));

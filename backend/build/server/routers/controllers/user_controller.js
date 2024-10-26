@@ -1,6 +1,9 @@
 "use strict";
 
+var _excluded = ["id"];
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -41,6 +44,26 @@ var UserController = /*#__PURE__*/function () {
       var data = db_users.getNameUser(user_id);
       if (data) res.status(200).json(data);else res.status(404).json({
         error: "Пользователь не найден"
+      });
+    }
+  }, {
+    key: "renderUserJSON",
+    value: function renderUserJSON(req, res) {
+      var user_id = req.params.id;
+      var data = db_users.getUserById(user_id);
+      if (data) res.status(200).json(data);else res.status(404).json({
+        error: "Пользователь не найден"
+      });
+    }
+  }, {
+    key: "changeParams",
+    value: function changeParams(req, res) {
+      var _req$body = req.body,
+        id = _req$body.id,
+        data = _objectWithoutProperties(_req$body, _excluded);
+      var change_param = db_users.changeParam(data, id);
+      if (change_param) res.status(200).json(change_param);else res.status(404).json({
+        error: "Данные не были изменены!"
       });
     }
   }]);

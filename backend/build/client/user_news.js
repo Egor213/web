@@ -33,6 +33,8 @@ function render_news_user() {
   var id = get_id_by_url();
   $.get("/api/user/news/".concat(id), function (response) {
     add_all_news(response);
+  }).fail(function (res) {
+    $('#news').append("\n            <div class=\"col-12 d-flex justify-content-center\">\n                <h2>\u041D\u043E\u0432\u043E\u0441\u0442\u0438 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u044B</h2>\n            </div>\n            ");
   });
 }
 function add_all_news(all_news) {
