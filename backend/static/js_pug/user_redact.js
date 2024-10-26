@@ -75,7 +75,7 @@ function change_params() {
             email: email
         };
         $.ajax({
-            url: 'http://localhost:3000/api/user/change_params/',
+            url: 'https://localhost:3000/api/user/change_params/',
             type: 'PUT', 
             contentType: 'application/json', 
             data: JSON.stringify(form_data),
