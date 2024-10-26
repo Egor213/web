@@ -18,6 +18,7 @@ function render_cards_users(users) {
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
                 <div class="card m-2 w-100">
                     <div class="card-body">
+                        <img src="${users[index]['img']}" alt="Фото пользователя" width="128" height="128" class="mb-2">
                         <h4 class="card-title">Пользователь ${users[index]['id']}</h2>
                         <p class="card-text">Имя: ${users[index]['name']}</p>
                         <p class="card-text">Дата рождения: ${users[index]['date']}</p>
