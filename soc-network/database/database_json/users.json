@@ -1,0 +1,116 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Egor",
+      "date": "26.02.2005",
+      "friends": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "role": "Администратор",
+      "status": "Активный",
+      "email": "zamok7707@gmail.com",
+      "img": "/st2/img/img1.jfif"
+    },
+    {
+      "id": 2,
+      "name": "Егорчик",
+      "date": "16.05.2004",
+      "friends": [
+        3,
+        5
+      ],
+      "role": "Пользователь",
+      "status": "Не подтвержденный",
+      "email": "slavik2004@gmail.com",
+      "img": "/st2/img/img2.jfif"
+    },
+    {
+      "id": 3,
+      "name": "Valeros",
+      "date": "09.05.1996",
+      "friends": [
+        1,
+        2,
+        8
+      ],
+      "role": "Пользователь",
+      "status": "Заблокированный",
+      "email": "valeros@gmail.com",
+      "img": "/st2/img/img3.jfif"
+    },
+    {
+      "id": 4,
+      "name": "Petrusok",
+      "date": "01.04.2009",
+      "friends": [
+        5
+      ],
+      "role": "Пользователь",
+      "status": "Подтвержденный",
+      "email": "petrone@gmail.com",
+      "img": "/st2/img/img4.jfif"
+    },
+    {
+      "id": 5,
+      "name": "Alexandr",
+      "date": "31.12.2006",
+      "friends": null,
+      "role": "Пользователь",
+      "status": "Заблокированный",
+      "email": "sashok@gmail.com",
+      "img": "/st2/img/img5.jfif"
+    },
+    {
+      "id": 6,
+      "name": "Olega",
+      "date": "15.11.2003",
+      "friends": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "role": "Администратор",
+      "status": "Активный",
+      "email": "olegator@gmail.com",
+      "img": "/st2/img/img6.jfif"
+    },
+    {
+      "id": 7,
+      "name": "Vovchik",
+      "date": "14.01.2007",
+      "friends": [
+        1,
+        2,
+        4
+      ],
+      "role": "Пользователь",
+      "status": "Активный",
+      "email": "vovakryt2015@gmail.com",
+      "img": "/st2/img/img7.jfif"
+    },
+    {
+      "id": 8,
+      "name": "Sergey RING",
+      "date": "01.01.2004",
+      "friends": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "role": "Администратор",
+      "status": "Активный",
+      "email": "GamerELDErRINg@gmail.com",
+      "img": "/st2/img/img8.jfif"
+    }
+  ]
+}
