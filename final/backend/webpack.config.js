@@ -12,11 +12,13 @@ client_js.forEach(file => {
   entry[name] = `./static/js_pug/${file}`;
 });
 
+const OUTDIR = 'build_webpack';
+
 module.exports = {
   mode: 'production',
   entry: entry,
   output: {
-    path: path.resolve(__dirname, './build/client'),
+    path: path.resolve(__dirname, `./${OUTDIR}/client`),
     filename: '[name].js',
   },
   module: {

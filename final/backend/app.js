@@ -1,3 +1,10 @@
+const IS_WEBPACK = false;
+let OUTDIR = null;
+if (IS_WEBPACK)
+    OUTDIR = 'build_webpack'
+else 
+    OUTDIR = 'build'
+
 const express = require("express");
 const server = express();
 const path = require('path');
@@ -9,7 +16,7 @@ const body_parser = require("body-parser");
 
 const user_checker = require(path.join(__dirname, "js", 'middleware', 'user_checker.js'))
 
-server.use('/', express.static(path.join(__dirname, 'build', 'client')))
+server.use('/', express.static(path.join(__dirname, OUTDIR, 'client')))
 server.use('/st2', express.static(path.join(__dirname, 'static')));
 server.use(express.json());
 server.use(body_parser.urlencoded({ extended: true }));
@@ -27,20 +34,20 @@ const https_options = {
 
 //Main routes
 server.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'html', 'index.html'));
+    res.sendFile(path.join(__dirname, OUTDIR, 'html', 'index.html'));
 });
 
 
 server.get("/user/friends/:id", user_checker, (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'html', 'user_page_friends.html'));
+    res.sendFile(path.join(__dirname, OUTDIR, 'html', 'user_page_friends.html'));
 });
 
 server.get("/user/news/:id", user_checker, (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'html', 'user_page_news.html'));
+    res.sendFile(path.join(__dirname, OUTDIR, 'html', 'user_page_news.html'));
 });
 
 server.get("/user/redact/:id", user_checker, (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'html', 'user_page_redact.html'));
+    res.sendFile(path.join(__dirname, OUTDIR, 'html', 'user_page_redact.html'));
 });
 
 
