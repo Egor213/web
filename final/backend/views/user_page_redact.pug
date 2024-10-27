@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    include headers/meta.pug
+    include headers/links.pug
+    include headers/scripts.pug
+    if state
+      link(rel='stylesheet', href='/style/main.css')
+    else
+      link(rel='stylesheet', href='/style/users_page_redact.css')
+    title User
+  body    
+    style. 
+      .nav-link {
+        cursor: pointer;
+      }
+
+    ul.nav.nav-pills.mb-2.justify-content-center.navig-div.p-2
+      li.nav-item
+        a.nav-link#news Новости друзей
+      li.nav-item#friends
+        a.nav-link Друзья
+      li.nav-item
+        a.nav-link.active Редактировать профиль
+    .d-flex.justify-content-center
+      .card-custom-width
+        h2 Пользователь: 
+          span#user-title
+        div#info
+        .mt-3
+            h3.mb-4 Статус:
+                select.form-select.mt-2.w-custom-selected#status-selector.crs-pointer
+                    option(selected) Выберите действие
+                    option(value="act") Активный
+                    option(value="lock") Заблокированный
+                    option(value="no-сonf") Не подтвержденный
+            h3.mb-4 Роль:
+                select.form-select.mt-2.w-custom-selected#role-selector.crs-pointer
+                    option(selected) Выберите действие
+                    option(value="admin") Администратор
+                    option(value="user") Пользователь
+            h3.mb-4 Имя:
+                input.mt-2.w-custom-selected.form-control#name-input
+            h3.mb-4 Дата рождения:
+                input.form-control.mt-2.w-custom-selected#date-input.crs-pointer(type = "date" name = "date")               
+            h3.mb-4 Email:
+                input.mt-2.w-custom-selected.form-control#email-input
+            button.btn.btn-primary#confirm-btn.mb-5 Изменить
+
+       
+               
+
+
+        
+
+        
+
+    include feature/return_button.pug
+
+    script(src="/user_redact.js")
