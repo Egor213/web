@@ -67,32 +67,44 @@ class GameManager {
     }
     
 
-    async movement(obj_field, map_field, obj) {
+movement(obj_field, map_field, obj) {
+        let is_moving = false;
+        
         document.addEventListener('keydown', (event) => {
-            this.move_manager = new MoveManager(obj_field, map_field)
+            if (is_moving) return;
+            is_moving = true;
+            
+            this.move_manager = new MoveManager(obj_field, map_field);
+            
             switch (event.code) {
                 case 'ArrowUp':
-                    if (this.move_manager.move(obj, 'up'))
-                        this.update_hero(0, this.map_manager.block_size.y)
+                    if (this.move_manager.move(obj, 'up')) {
+                        this.update_hero(0, this.map_manager.block_size.y);
+                    }
                     break;
                 case 'ArrowDown': 
-                    if (this.move_manager.move(obj, 'down'))
-                        this.update_hero(0, -1 * this.map_manager.block_size.y)
+                    if (this.move_manager.move(obj, 'down')) {
+                        this.update_hero(0, -1 * this.map_manager.block_size.y);
+                    }
                     break;
                 case 'ArrowLeft':
-                    if (this.move_manager.move(obj, 'left'))
-                        this.update_hero(this.map_manager.block_size.x, 0)
+                    if (this.move_manager.move(obj, 'left')) {
+                        this.update_hero(this.map_manager.block_size.x, 0);
+                    }
                     break;
                 case 'ArrowRight':
-                    if (this.move_manager.move(obj, 'right'))
-                        this.update_hero(-1 * this.map_manager.block_size.x, 0)
+                    if (this.move_manager.move(obj, 'right')) {
+                        this.update_hero(-1 * this.map_manager.block_size.x, 0);
+                    }
                     break;
                 default:
                     break;
             }
+            setTimeout(() => {
+                is_moving = false;
+            }, 50); 
         });
     }
-
     update_hero(dop_x, dop_y) {
         this.map_manager.clear_entity(
             this.hero_manager.coord_x * this.map_manager.block_size.x + dop_x,
