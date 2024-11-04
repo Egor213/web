@@ -1,0 +1,183 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "assest/img/lvl2.tmx",
+    "expandedProjectPaths": [
+        "assest",
+        ".",
+        "assest/img"
+    ],
+    "fileStates": {
+        "262375b27a1865c4856cc7f33be4456e.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "6b7e21c3bb315f1883ad01b8acb22efd.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "969-9697033_share-soldier-sprite-rpg.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "EnemySpriteSheet1.png-par-Kazzador.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assest/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx": {
+            "scaleInDock": 1
+        },
+        "assest/969-9697033_share-soldier-sprite-rpg.tsx": {
+            "scaleInDock": 1
+        },
+        "assest/EnemySpriteSheet1.png-par-Kazzador.tsx": {
+            "scaleInDock": 1
+        },
+        "assest/img/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assest/img/969-9697033_share-soldier-sprite-rpg.tsx": {
+            "scaleInDock": 1
+        },
+        "assest/img/EnemySpriteSheet1.png-par-Kazzador.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "assest/img/lvl1.tmx": {
+            "scale": 0.8470833333333333,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 480.47220855878015,
+                "y": 358.87850467289724
+            }
+        },
+        "assest/img/lvl1.tmx#test": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "assest/img/lvl2.tmx": {
+            "scale": 0.8451041666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.414150129422,
+                "y": 319.48724269690626
+            }
+        },
+        "assest/img/test.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assest/lvl1.json": {
+            "scale": 0.9025,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.33240997229916,
+                "y": 320.22160664819944
+            }
+        },
+        "assest/lvl1.tmx": {
+            "scale": 0.9025,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 508.5872576177286,
+                "y": 280.8864265927978
+            }
+        },
+        "assest/lvl2.tmx": {
+            "scale": 0.9025,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.77839335180056,
+                "y": 162.3268698060942
+            }
+        },
+        "assest/test.tsx": {
+            "scaleInDock": 1
+        },
+        "lvl1.json": {
+            "scale": 1.07171875,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 479.603440734801,
+                "y": 319.58011371920105
+            }
+        },
+        "lvl1.tmx": {
+            "expandedObjectLayers": [
+                9,
+                8,
+                7,
+                10
+            ],
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 514.6666666666666,
+                "y": 462.6666666666666
+            }
+        },
+        "lvl2.json": {
+            "scale": 1.07171875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -16.795451231958054,
+                "y": 421.7524420469456
+            }
+        },
+        "lvl2.tmx": {
+            "expandedObjectLayers": [
+                9,
+                7,
+                8
+            ],
+            "scale": 0.75,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 476,
+                "y": 334.6666666666667
+            }
+        },
+        "test.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/FRONT/cw",
+    "last.imagePath": "C:/Users/zamok/Downloads",
+    "map.lastUsedExportFilter": "JSON map-файлы (*.tmj *.json)",
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": "1",
+    "openFiles": [
+        "lvl1.tmx",
+        "assest/img/lvl1.tmx",
+        "assest/img/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx",
+        "assest/img/test.tsx",
+        "assest/img/lvl2.tmx"
+    ],
+    "project": "безымянный.tiled-project",
+    "recentFiles": [
+        "lvl1.tmx",
+        "assest/img/lvl1.tmx",
+        "assest/img/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx",
+        "assest/img/test.tsx",
+        "assest/img/lvl2.tmx",
+        "EnemySpriteSheet1.png-par-Kazzador.tsx",
+        "969-9697033_share-soldier-sprite-rpg.tsx",
+        "6b7e21c3bb315f1883ad01b8acb22efd.tsx",
+        "262375b27a1865c4856cc7f33be4456e.tsx",
+        "lvl1.json",
+        "lvl2.json",
+        "assest/lvl1.json"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
