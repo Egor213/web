@@ -13,12 +13,6 @@ export class MapManager
         this.json_loaded = false
         this.map_canvas = document.getElementById('game-canvas')
         this.ctx_canvas = this.map_canvas.getContext('2d')
-        this.img_paths = {
-            hero: "hero.png",
-            monstr: "monstr.png",
-            wall: "wall.webp",
-            bonus: "bonus.png"
-        }
         this.matrix_field = this.create_empty_map(30, 20)
         if (lvl == 1) {
             this.reward_coords = {x: 4, y: 1}
@@ -81,31 +75,33 @@ export class MapManager
             }
         }
     
-        
+        let last_source = null
+        let last_data = null
         for (let i = 0; i < this.matrix_field.length; i++) {
             for (let j = 0; j < this.matrix_field[i].length; j++) {
+                
                 let block_id = this.matrix_field[i][j];
-                this.draw_block(block_id, j * this.block_size.x, i * this.block_size.y)
+                if (last_source == null || last_source != this.find_source(this.map_data.tilesets, block_id)) {
+                    last_source = this.find_source(this.map_data.tilesets, block_id)
+                    last_data = await this.open_tsx(BASE_PATH_TILED + last_source);
+                }
+                this.draw_block(block_id, j * this.block_size.x, i * this.block_size.y, last_data)
             }
         }
 
         
     }
 
-    async draw_block(test_id, x, y) {
-        let source = this.find_source(this.map_data.tilesets, test_id)
-        await this.open_tsx(BASE_PATH_TILED + source).then((data) => {
-            console.log(data)
-            const image = new Image();
-            image.src = '../assest/' + data.source;
-            image.onload = () => {
-                const row = Math.floor(test_id / data.columns); 
-                const col = test_id % data.columns; 
-                const sx = col * data.width;
-                const sy = row * data.height; 
-                this.ctx_canvas.drawImage(image, sx, sy, data.width, data.height, x, y, data.width, data.height);
-            };  
-        })
+    async draw_block(test_id, x, y, data) {
+        const image = new Image();
+        image.src = IMG_PATH + data.source;
+        image.onload = () => {
+            const row = Math.floor(test_id / data.columns); 
+            const col = test_id % data.columns; 
+            const sx = col * data.width;
+            const sy = row * data.height; 
+            this.ctx_canvas.drawImage(image, sx, sy, data.width, data.height, x, y, data.width, data.height);
+        };  
     }
 
     find_source(array, number) {
