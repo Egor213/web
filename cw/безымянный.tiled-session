@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "lvl1.tmx",
+    "activeFile": "lvl2.tmx",
     "expandedProjectPaths": [
-        ".",
         "assest/img",
-        "assest"
+        "assest",
+        "."
     ],
     "fileStates": {
         "262375b27a1865c4856cc7f33be4456e.tsx": {
@@ -114,9 +114,9 @@
         "lvl1.tmx": {
             "expandedObjectLayers": [
                 9,
-                8,
                 7,
-                10
+                10,
+                8
             ],
             "scale": 0.75,
             "selectedLayer": 0,
@@ -159,25 +159,22 @@
     "map.layerDataFormat": "1",
     "openFiles": [
         "lvl1.tmx",
-        "assest/img/lvl1.tmx",
-        "assest/img/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx",
-        "assest/img/test.tsx",
-        "assest/img/lvl2.tmx"
+        "lvl2.tmx"
     ],
     "project": "безымянный.tiled-project",
     "recentFiles": [
+        "lvl1.tmx",
+        "lvl2.tmx",
         "assest/img/lvl2.tmx",
         "assest/img/test.tsx",
         "assest/img/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx",
         "assest/img/lvl1.tmx",
-        "lvl1.tmx",
         "EnemySpriteSheet1.png-par-Kazzador.tsx",
         "969-9697033_share-soldier-sprite-rpg.tsx",
         "6b7e21c3bb315f1883ad01b8acb22efd.tsx",
         "262375b27a1865c4856cc7f33be4456e.tsx",
         "lvl1.json",
-        "lvl2.json",
-        "assest/lvl1.json"
+        "lvl2.json"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

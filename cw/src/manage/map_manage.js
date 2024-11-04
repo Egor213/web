@@ -1,5 +1,5 @@
 import { IMG_PATH, BASE_PATH_TILED } from "../paths.js"
-import { find_source, open_tsx, draw_block } from "../tools.js"
+import { find_source, open_tsx, draw_block,clear_entity } from "../tools.js"
 
 export class MapManager 
 {
@@ -15,7 +15,7 @@ export class MapManager
         this.map_canvas = document.getElementById('game-canvas')
         this.ctx_canvas = this.map_canvas.getContext('2d')
         this.map_canvas_bg = document.getElementById('game-canvas-background')
-        this.ctx_canvas_bg = this.map_canvas.getContext('2d')
+        this.ctx_canvas_bg = this.map_canvas_bg.getContext('2d')
         this.matrix_field = this.create_empty_map(30, 20)
         this.object_field = this.create_empty_map(30, 20)
         
@@ -98,6 +98,12 @@ export class MapManager
                     last_data = await open_tsx(BASE_PATH_TILED + last_source);
                 }
                 draw_block(block_id, j * this.block_size.x, i * this.block_size.y, last_data, this.ctx_canvas_bg)
+                if (this.matrix_field[i][j] == 37 || 
+                    this.matrix_field[i][j] == 174 ||
+                    this.matrix_field[i][j] == 1 ||
+                    this.matrix_field[i][j] == 41
+                    )
+                    this.matrix_field[i][j] = -1;
             }
         }
     }
@@ -106,10 +112,13 @@ export class MapManager
         let source = find_source(this.map_data.tilesets, gid);
         gid = gid - source.firstgid
         let data_img = await open_tsx(BASE_PATH_TILED + source.source);
-        draw_block(gid, x, y, data_img, this.ctx_canvas) 
-        this.object_field[y / this.block_size.y][x / this.block_size.x] = 1
+        draw_block(gid, x * this.block_size.x, y * this.block_size.y, data_img, this.ctx_canvas) 
+        this.object_field[y][x] = 1
     }
 
+    clear_entity(x, y, width, height, ctx) {
+        clear_entity(x, y, width, height, ctx)
+    }
     
 
     

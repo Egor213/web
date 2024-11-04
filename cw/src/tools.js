@@ -49,8 +49,10 @@ export function draw_block(test_id, x, y, data, ctx)
         const col = test_id % data.columns; 
         const sx = col * data.width;
         const sy = row * data.height;
-    // console.log(image, sx, sy)
-
         ctx.drawImage(image, sx, sy, data.width, data.height, x, y, data.width, data.height);
     };  
+}
+
+export function clear_entity(x, y, width, height, ctx) {
+    ctx.clearRect(x, y, width, height);
 }
