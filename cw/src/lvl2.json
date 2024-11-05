@@ -148,7 +148,30 @@
          "visible":true,
          "x":0,
          "y":0
-        }],
+        },
+        {
+              "draworder":"topdown",
+              "id":11,
+              "name":"shot",
+              "objects":[
+                     {
+                      "gid":969,
+                      "height":32,
+                      "id":8,
+                      "name":"",
+                      "rotation":0,
+                      "type":"",
+                      "visible":true,
+                      "width":32,
+                      "x":896,
+                      "y":544
+                     }],
+              "opacity":1,
+              "type":"objectgroup",
+              "visible":true,
+              "x":0,
+              "y":0
+             }],
  "nextlayerid":13,
  "nextobjectid":8,
  "orientation":"orthogonal",
@@ -171,6 +194,10 @@
         {
          "firstgid":393,
          "source":"33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx"
+        }, 
+        {
+         "firstgid":969,
+         "source":"shot.tsx"
         }],
  "tilewidth":32,
  "type":"map",

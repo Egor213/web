@@ -62,9 +62,9 @@ export class MapManager
         this.map_canvas_fog.height = this.map_size.y
         this.tile_layers = this.map_data.layers              
         await this.make_background()  
-        this.json_loaded = true
-        console.log(this.matrix_field)
-        console.log(this.object_data)
+        // this.json_loaded = true
+        // console.log(this.matrix_field)
+        // console.log(this.object_data)
     }
 
 

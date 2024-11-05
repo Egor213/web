@@ -5,6 +5,7 @@ export const IMG_PATH = '../../assest/img';
 export const HERO_METKA = 1
 export const HEAL_METKA = 2
 export const TARGET_METKA = 3
+export const SHOT_METKA = 4
 export const HEAL_VALUE = 5
 export const HEAL_SCORE = 10
 export const TARGET_SCORE = 100

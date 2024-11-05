@@ -1,4 +1,4 @@
-import { TARGET_METKA } from "../paths.js";
+import { TARGET_METKA, SHOT_METKA, HERO_METKA } from "../paths.js";
 
 export class MoveManager {
     constructor(obj_field, map_field) {
@@ -11,11 +11,18 @@ export class MoveManager {
 
         const move_result = this.check_coords(new_x, new_y);
         if (move_result == TARGET_METKA) return move_result
-        if (move_result) {
+
+        if (obj.metka == SHOT_METKA && this.obj_field[obj.coord_y][obj.coord_x] == HERO_METKA) {
+            obj.coord_x = new_x;
+            obj.coord_y = new_y;
+            this.obj_field[obj.coord_y][obj.coord_x] = obj.metka;
+            return move_result;
+            
+        }else if (move_result) {
             this.update_position(obj, new_x, new_y);
-            console.log(this.obj_field)
             return move_result;
         }
+        console.log(this.obj_field)
         return false;
     }
 

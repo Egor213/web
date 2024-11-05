@@ -1,15 +1,19 @@
 import { MapManager } from "./manage/map_manage.js";
 import { HeroManager } from "./manage/hero_manage.js";
-import { PATH_MAP_ONE, PATH_MAP_TWO, HEAL_METKA, HERO_METKA, HEAL_VALUE, HEAL_SCORE, TARGET_SCORE, TARGET_METKA } from "./paths.js";
+import { PATH_MAP_ONE, PATH_MAP_TWO, HEAL_METKA, HERO_METKA, HEAL_VALUE, HEAL_SCORE, TARGET_SCORE, TARGET_METKA, SHOT_METKA } from "./paths.js";
 import { MoveManager } from "./manage/move_manage.js";
 import { SpriteManage } from "./manage/sprite_manage.js";
 import { HealEntity } from "./manage/heal_entity.js";
 import { TargetEntity } from "./manage/targer_entity.js";
+import { ShotEntity } from "./manage/shot_entity.js";
+import { PhysicManager } from "./manage/physic_manage.js";
 
 class GameManager {
     constructor() {
         this.cur_lvl = 1
         this.game_score = 0 
+        this.shots = []
+
     }
 
     async open_json(path) 
@@ -60,14 +64,31 @@ class GameManager {
             this.map_manager.matrix_field, 
             this.hero_manager
         )
+
+        this.shoting()
+
+        this.physic_manager = new PhysicManager(this.move_manager, this.map_manager);
                
         this.bonuses = this.create_bonuses()
         this.draw_bonuses()
 
         this.target = this.create_targets()
         this.draw_targets()
+
         
+
     }
+
+    create_shot() {
+        const shot = this.get_entity_data('shot')[0]
+        shot.x = this.hero_manager.coord_x
+        shot.y = this.hero_manager.coord_y
+        const shot_entity = new ShotEntity(shot)
+        this.shots.push(shot_entity)
+    }
+
+    
+
 
     draw_targets() {
         for (let target of this.target) {
@@ -128,12 +149,12 @@ class GameManager {
 
     movement(obj_field, map_field, obj) {
         let is_moving = false;
-    
+        this.move_manager = new MoveManager(obj_field, map_field);
         const handle_key_down = (event) => {
             if (is_moving) return;
             is_moving = true;
-    
-            this.move_manager = new MoveManager(obj_field, map_field);
+            let time = 150
+            
             switch (event.code) {
                 case 'ArrowUp':
                     this.process_movement(obj, 'up', 0, this.map_manager.block_size.y, 'up');
@@ -153,7 +174,7 @@ class GameManager {
     
             setTimeout(() => {
                 is_moving = false;
-            }, 150);
+            }, time);
         };
 
         document.addEventListener('keydown', handle_key_down);
@@ -162,6 +183,48 @@ class GameManager {
             document.removeEventListener('keydown', handle_key_down);
         };
     }
+
+
+    shoting() {
+        let is_moving = false;
+        const handle_key_down = (event) => {
+            if (is_moving) return;
+            is_moving = true;
+            let time = 100
+            switch (event.code) {
+                case 'KeyW':
+                    this.create_shot()
+                    this.physic_manager.make_shot(this.shots[this.shots.length - 1], 'up')
+                    break;
+                case 'KeyD':
+                    this.create_shot()
+                    this.physic_manager.make_shot(this.shots[this.shots.length - 1], 'right')
+                    break;
+                case 'KeyA':
+                    this.create_shot()
+                    this.physic_manager.make_shot(this.shots[this.shots.length - 1], 'left')
+                    break;
+                case 'KeyS':
+                    this.create_shot()
+                    this.physic_manager.make_shot(this.shots[this.shots.length - 1], 'down')
+                    break;
+                default:
+                    break;
+            }
+    
+            setTimeout(() => {
+                is_moving = false;
+            }, time);
+        };
+
+        document.addEventListener('keydown', handle_key_down);
+    
+        this.stop_shoting = () => {
+            document.removeEventListener('keydown', handle_key_down);
+        };
+    }
+
+
     
 
     process_movement(obj, side, x, y, sprite) {
@@ -178,13 +241,20 @@ class GameManager {
         if (is_move)
             this.game_score += 1
         if (is_move == TARGET_METKA) {
-            alert("You win!")
-            // this.stop_movement()
-            // this.init(2)
+            this.complete_lvl()
         } else if (is_move == HEAL_METKA) {
             this.hero_manager.add_hp(HEAL_VALUE)
             this.clear_bonus()
         }
+    }
+
+
+    complete_lvl() {
+        alert("You win!")
+        this.stop_movement()
+        this.stop_shoting()
+        this.shots = []
+        this.init(2)
     }
 
 

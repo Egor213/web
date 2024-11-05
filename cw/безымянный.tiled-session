@@ -7,6 +7,7 @@
     "expandedProjectPaths": [
         "assest/img",
         "assest",
+        "src",
         "."
     ],
     "fileStates": {
@@ -28,6 +29,19 @@
         },
         "EnemySpriteSheet1.png-par-Kazzador.tsx": {
             "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Shiruken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Shuriken pronta 2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Shuriken.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -103,6 +117,17 @@
         "assest/test.tsx": {
             "scaleInDock": 1
         },
+        "assest/tiled/lvl1.tmx": {
+            "scale": 0.8945833333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.55286446204013,
+                "y": 175.5006986492781
+            }
+        },
+        "assest/tiled/test.tsx": {
+            "dynamicWrapping": false
+        },
         "lvl1.json": {
             "scale": 1.07171875,
             "selectedLayer": 3,
@@ -113,17 +138,20 @@
         },
         "lvl1.tmx": {
             "expandedObjectLayers": [
-                9,
                 7,
-                10,
-                8
+                8,
+                9,
+                10
             ],
             "scale": 0.75,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 514.6666666666666,
-                "y": 462.6666666666666
+                "x": 514.6666666666665,
+                "y": 273.33333333333337
             }
+        },
+        "lvl1.tmx#hero": {
+            "scaleInDock": 1
         },
         "lvl2.json": {
             "scale": 1.07171875,
@@ -135,16 +163,45 @@
         },
         "lvl2.tmx": {
             "expandedObjectLayers": [
-                9,
                 7,
-                8
+                8,
+                9
             ],
             "scale": 0.75,
-            "selectedLayer": 5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 476,
-                "y": 334.6666666666667
+                "x": 604,
+                "y": 184
             }
+        },
+        "result_Shuriken pronta 2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "shot.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "src/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx": {
+            "scaleInDock": 1
+        },
+        "src/969-9697033_share-soldier-sprite-rpg.tsx": {
+            "scaleInDock": 1
+        },
+        "src/EnemySpriteSheet1.png-par-Kazzador.tsx": {
+            "scaleInDock": 1
+        },
+        "src/lvl1.json": {
+            "scale": 0.8451041666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.41415012942207,
+                "y": 152.0522618020461
+            }
+        },
+        "src/test.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
         },
         "test.tsx": {
             "dynamicWrapping": true,
@@ -153,28 +210,35 @@
         }
     },
     "last.exportedFilePath": "C:/FRONT/cw",
-    "last.imagePath": "C:/Users/zamok/Downloads",
+    "last.imagePath": "C:/FRONT/cw/assest/img",
     "map.lastUsedExportFilter": "JSON map-файлы (*.tmj *.json)",
     "map.lastUsedFormat": "json",
     "map.layerDataFormat": "1",
     "openFiles": [
         "lvl1.tmx",
-        "lvl2.tmx"
+        "lvl2.tmx",
+        "Shiruken.tsx",
+        "Shuriken.tsx",
+        "Shuriken pronta 2.tsx",
+        "result_Shuriken pronta 2.tsx",
+        "shot.tsx",
+        "shot.tsx",
+        "src/lvl1.json"
     ],
     "project": "безымянный.tiled-project",
     "recentFiles": [
-        "lvl1.tmx",
+        "shot.tsx",
+        "src/lvl1.json",
+        "result_Shuriken pronta 2.tsx",
+        "Shuriken pronta 2.tsx",
+        "Shuriken.tsx",
+        "Shiruken.tsx",
         "lvl2.tmx",
+        "lvl1.tmx",
         "assest/img/lvl2.tmx",
         "assest/img/test.tsx",
         "assest/img/33076_Enchanted_Outside_B_E_MVedit_by_Sinnistar_BY__png-par-Sinnistar, Kadokawa.tsx",
-        "assest/img/lvl1.tmx",
-        "EnemySpriteSheet1.png-par-Kazzador.tsx",
-        "969-9697033_share-soldier-sprite-rpg.tsx",
-        "6b7e21c3bb315f1883ad01b8acb22efd.tsx",
-        "262375b27a1865c4856cc7f33be4456e.tsx",
-        "lvl1.json",
-        "lvl2.json"
+        "assest/img/lvl1.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }
