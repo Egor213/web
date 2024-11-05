@@ -2,6 +2,7 @@ import { MapManager } from "./manage/map_manage.js";
 import { HeroManager } from "./manage/hero_manage.js";
 import { PATH_MAP_ONE, PATH_MAP_TWO } from "./paths.js";
 import { MoveManager } from "./manage/move_manage.js";
+import { SpriteManage } from "./manage/sprite_manage.js";
 
 class GameManager {
     constructor() {
@@ -38,6 +39,7 @@ class GameManager {
         await this.map_manager.parseMap(json_lvl)
         this.hero_manager = new HeroManager(this.get_hero_data(), this.map_manager.object_field)
         this.map_manager.draw_hero(this.hero_manager.gid, this.hero_manager.coord_x, this.hero_manager.coord_y)
+        this.sprite_manager = new SpriteManage()
 
         this.movement(
             this.map_manager.object_field, 
@@ -67,7 +69,7 @@ class GameManager {
     }
     
 
-movement(obj_field, map_field, obj) {
+    movement(obj_field, map_field, obj) {
         let is_moving = false;
         
         document.addEventListener('keydown', (event) => {
@@ -78,34 +80,33 @@ movement(obj_field, map_field, obj) {
             
             switch (event.code) {
                 case 'ArrowUp':
-                    if (this.move_manager.move(obj, 'up')) {
-                        this.update_hero(0, this.map_manager.block_size.y);
-                    }
+                    if (this.move_manager.move(obj, 'up'))
+                        this.update_hero(0, this.map_manager.block_size.y, this.sprite_manager.get_next_value('up'));
                     break;
                 case 'ArrowDown': 
-                    if (this.move_manager.move(obj, 'down')) {
-                        this.update_hero(0, -1 * this.map_manager.block_size.y);
-                    }
+                    if (this.move_manager.move(obj, 'down'))
+                        this.update_hero(0, -1 * this.map_manager.block_size.y, this.sprite_manager.get_next_value('down'));
                     break;
                 case 'ArrowLeft':
-                    if (this.move_manager.move(obj, 'left')) {
-                        this.update_hero(this.map_manager.block_size.x, 0);
-                    }
+                    if (this.move_manager.move(obj, 'left'))
+                        this.update_hero(this.map_manager.block_size.x, 0, this.sprite_manager.get_next_value('left'));
                     break;
                 case 'ArrowRight':
-                    if (this.move_manager.move(obj, 'right')) {
-                        this.update_hero(-1 * this.map_manager.block_size.x, 0);
-                    }
+                    if (this.move_manager.move(obj, 'right'))
+                        this.update_hero(-1 * this.map_manager.block_size.x, 0, this.sprite_manager.get_next_value('right'));
                     break;
                 default:
                     break;
             }
             setTimeout(() => {
                 is_moving = false;
-            }, 50); 
+            }, 150); 
         });
     }
-    update_hero(dop_x, dop_y) {
+    
+
+    update_hero(dop_x, dop_y, spriter) {
+        console.log(spriter)
         this.map_manager.clear_entity(
             this.hero_manager.coord_x * this.map_manager.block_size.x + dop_x,
             this.hero_manager.coord_y * this.map_manager.block_size.y + dop_y,
@@ -113,8 +114,8 @@ movement(obj_field, map_field, obj) {
             this.hero_manager.entity_height,
             this.map_manager.ctx_canvas
         )
-        this.map_manager.draw_hero(
-            this.hero_manager.gid, 
+        this.map_manager.draw_hero( 
+            this.hero_manager.gid + spriter, 
             this.hero_manager.coord_x, 
             this.hero_manager.coord_y
         )
