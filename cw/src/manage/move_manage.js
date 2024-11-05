@@ -1,4 +1,4 @@
-import { HEAL_METKA } from "../paths.js";
+import { TARGET_METKA } from "../paths.js";
 
 export class MoveManager {
     constructor(obj_field, map_field) {
@@ -10,6 +10,7 @@ export class MoveManager {
         const { new_x, new_y } = this.calculate_new_position(obj, side);
 
         const move_result = this.check_coords(new_x, new_y);
+        if (move_result == TARGET_METKA) return move_result
         if (move_result) {
             this.update_position(obj, new_x, new_y);
             console.log(this.obj_field)
@@ -32,7 +33,7 @@ export class MoveManager {
 
     check_coords(x, y) {
         if (this.map_field[y][x] !== -1) {
-            return this.obj_field[y][x] === HEAL_METKA ? HEAL_METKA : true;
+            return this.obj_field[y][x] == 0 ? true : this.obj_field[y][x];
         }
         return false;
     }

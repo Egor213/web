@@ -12,10 +12,16 @@ export class MapManager
         this.block_size = {x: 0, y: 0}
         this.map_size = {x: 0, y: 0}
         this.json_loaded = false
+
         this.map_canvas = document.getElementById('game-canvas')
         this.ctx_canvas = this.map_canvas.getContext('2d')
+
         this.map_canvas_bg = document.getElementById('game-canvas-background')
         this.ctx_canvas_bg = this.map_canvas_bg.getContext('2d')
+
+        this.map_canvas_fog = document.getElementById('game-canvas-fog')
+        this.ctx_canvas_fog = this.map_canvas_fog.getContext('2d')
+
         this.matrix_field = this.create_empty_map(30, 20)
         this.object_field = this.create_empty_map(30, 20)
         
@@ -52,6 +58,8 @@ export class MapManager
         this.map_canvas.height = this.map_size.y
         this.map_canvas_bg.width = this.map_size.x
         this.map_canvas_bg.height = this.map_size.y
+        this.map_canvas_fog.width = this.map_size.x
+        this.map_canvas_fog.height = this.map_size.y
         this.tile_layers = this.map_data.layers              
         await this.make_background()  
         this.json_loaded = true
@@ -119,8 +127,14 @@ export class MapManager
     clear_entity(x, y, width, height, ctx) {
         clear_entity(x, y, width, height, ctx)
     }
-    
 
-    
+
+    update_fog(x, y) {
+        // this.ctx_canvas_fog.fillStyle = 'rgba(0, 0, 0, 0.9)';
+        // this.ctx_canvas_fog.clearRect(0, 0, this.map_canvas_fog.width, this.map_canvas_fog.height);
+        // this.ctx_canvas_fog.fillRect(0, 0, this.map_canvas_fog.width, this.map_canvas_fog.height);
+        // this.ctx_canvas_fog.clearRect((x * this.block_size.x)-64, (y * this.block_size.y)-32, 160, 96);
+        // this.ctx_canvas_fog.clearRect((x * this.block_size.x)-32, (y * this.block_size.y)-64, 96, 160);
+    }
     
 }

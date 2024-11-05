@@ -3,9 +3,10 @@ import { HEAL_METKA } from "../paths.js"
 
 
 export class HealEntity extends Entity {
-    constructor(data, heal) {
+    constructor(data, heal, score) {
         super(data)
         this.heal = heal
         this.metka = HEAL_METKA
+        this.score = score
     }
 }

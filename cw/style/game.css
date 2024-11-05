@@ -23,7 +23,7 @@ body {
     height: 640px; 
 }
 
-#game-canvas, #game-canvas-background {
+#game-canvas, #game-canvas-background, #game-canvas-fog {
     position: absolute;
     top: 0;
     left: 0;
@@ -33,6 +33,10 @@ body {
 
 #game-canvas {
     z-index: 1000;
+}
+
+#game-canvas-fog {
+    z-index: 2000;
 }
 
 
