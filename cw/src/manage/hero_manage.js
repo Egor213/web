@@ -17,7 +17,6 @@ export class HeroManager extends Entity {
 
     add_hp(value) {
         this.heal += value
-        console.log(this.heal)
     }
     
     

@@ -3,13 +3,13 @@ import { HeroManager } from "./manage/hero_manage.js";
 import { PATH_MAP_ONE, PATH_MAP_TWO, HEAL_METKA, HERO_METKA, HEAL_VALUE } from "./paths.js";
 import { MoveManager } from "./manage/move_manage.js";
 import { SpriteManage } from "./manage/sprite_manage.js";
-import { HealManager } from "./manage/heal_manage.js";
+import { HealEntity } from "./manage/heal_entity.js";
 
 class GameManager {
     constructor() {
         this.cur_lvl = 1
         this.map_manager = new MapManager(this.cur_lvl);
-        
+        this.game_score = 0 
     }
 
     async open_json(path) 
@@ -17,10 +17,7 @@ class GameManager {
         let response_json = null
         await fetch(path,
             {
-                headers:
-                {
-                    'Content-Type': 'application/json',
-                },
+                headers: {'Content-Type': 'application/json',},
                 method: "GET"
             }
         )
@@ -63,7 +60,7 @@ class GameManager {
         let temp = []
         const bonuses = this.get_entity_data('bonus')
         for (let i in bonuses)
-            temp.push(new HealManager(bonuses[i], HEAL_VALUE))
+            temp.push(new HealEntity(bonuses[i], HEAL_VALUE))
         return temp
     }
 
@@ -129,6 +126,7 @@ class GameManager {
     }
 
     process_movement(obj, side, x, y, sprite) {
+        this.game_score += 1
         let is_move = this.move_manager.move(obj, side);
         this.check_move_hp(is_move);
         this.update_entity(x, y, HERO_METKA, this.sprite_manager.get_next_value(sprite));
@@ -137,6 +135,7 @@ class GameManager {
     check_move_hp(is_move) {
         if (is_move == HEAL_METKA) {
             this.hero_manager.add_hp(HEAL_VALUE)
+            this.game_score += 10
             this.clear_bonus()
         }
     }
@@ -178,6 +177,7 @@ class GameManager {
     
 
 }
+
 
 let game = new GameManager()
 game.start_game();
