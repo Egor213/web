@@ -108,12 +108,12 @@ export class MapManager
         }
     }
 
-    async draw_hero(gid, x, y) {
+    async draw_entity(gid, x, y, metka) {
         let source = find_source(this.map_data.tilesets, gid);
         gid = gid - source.firstgid
         let data_img = await open_tsx(BASE_PATH_TILED + source.source);
         draw_block(gid, x * this.block_size.x, y * this.block_size.y, data_img, this.ctx_canvas) 
-        this.object_field[y][x] = 1
+        this.object_field[y][x] = metka
     }
 
     clear_entity(x, y, width, height, ctx) {

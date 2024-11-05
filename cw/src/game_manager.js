@@ -1,8 +1,9 @@
 import { MapManager } from "./manage/map_manage.js";
 import { HeroManager } from "./manage/hero_manage.js";
-import { PATH_MAP_ONE, PATH_MAP_TWO } from "./paths.js";
+import { PATH_MAP_ONE, PATH_MAP_TWO, HEAL_METKA, HERO_METKA, HEAL_VALUE } from "./paths.js";
 import { MoveManager } from "./manage/move_manage.js";
 import { SpriteManage } from "./manage/sprite_manage.js";
+import { HealManager } from "./manage/heal_manage.js";
 
 class GameManager {
     constructor() {
@@ -37,8 +38,13 @@ class GameManager {
     async init() {
         let json_lvl = await this.open_json(PATH_MAP_ONE);
         await this.map_manager.parseMap(json_lvl)
-        this.hero_manager = new HeroManager(this.get_hero_data(), this.map_manager.object_field)
-        this.map_manager.draw_hero(this.hero_manager.gid, this.hero_manager.coord_x, this.hero_manager.coord_y)
+        this.hero_manager = new HeroManager(this.get_entity_data('hero')[0], this.map_manager.object_field)
+        this.map_manager.draw_entity(
+            this.hero_manager.gid, 
+            this.hero_manager.coord_x, 
+            this.hero_manager.coord_y,
+            HERO_METKA
+        )
         this.sprite_manager = new SpriteManage()
 
         this.movement(
@@ -46,28 +52,50 @@ class GameManager {
             this.map_manager.matrix_field, 
             this.hero_manager
         )
-
-
-
+               
+        this.bonuses = this.create_bonuses()
+        this.draw_bonuses()
+        
         
     }
 
+    create_bonuses() {
+        let temp = []
+        const bonuses = this.get_entity_data('bonus')
+        for (let i in bonuses)
+            temp.push(new HealManager(bonuses[i], HEAL_VALUE))
+        return temp
+    }
 
-    get_hero_data() {
-        let objects = this.map_manager.object_data
-        for (let obj of objects) {
-            if (obj.name == 'hero') {
-                return {
-                    width: obj.objects[0].width,
-                    height: obj.objects[0].height,
-                    x: obj.objects[0].x / this.map_manager.block_size.x,
-                    y: obj.objects[0].y / this.map_manager.block_size.y,
-                    gid: obj.objects[0].gid
-                }
-            }
+    draw_bonuses() {
+        for (let bonus of this.bonuses) {
+            this.map_manager.draw_entity(
+                bonus.gid, 
+                bonus.coord_x, 
+                bonus.coord_y,
+                HEAL_METKA
+            )
         }
     }
-    
+
+    get_entity_data(type) {
+        let objects = this.map_manager.object_data
+        let temp_arr = []
+        for (let obj of objects) {
+            if (obj.name == type) {
+                for (let value of obj.objects) {
+                    temp_arr.push({
+                        width: value.width,
+                        height: value.height,
+                        x: value.x / this.map_manager.block_size.x,
+                        y: value.y / this.map_manager.block_size.y,
+                        gid: value.gid
+                    })
+                }
+                return temp_arr
+            }
+        }
+    }    
 
     movement(obj_field, map_field, obj) {
         let is_moving = false;
@@ -77,36 +105,61 @@ class GameManager {
             is_moving = true;
             
             this.move_manager = new MoveManager(obj_field, map_field);
-            
             switch (event.code) {
                 case 'ArrowUp':
-                    if (this.move_manager.move(obj, 'up'))
-                        this.update_hero(0, this.map_manager.block_size.y, this.sprite_manager.get_next_value('up'));
+                    this.process_movement(obj, 'up', 0, this.map_manager.block_size.y, 'up');
                     break;
-                case 'ArrowDown': 
-                    if (this.move_manager.move(obj, 'down'))
-                        this.update_hero(0, -1 * this.map_manager.block_size.y, this.sprite_manager.get_next_value('down'));
+                case 'ArrowDown':
+                    this.process_movement(obj, 'down', 0, -this.map_manager.block_size.y, 'down');
                     break;
                 case 'ArrowLeft':
-                    if (this.move_manager.move(obj, 'left'))
-                        this.update_hero(this.map_manager.block_size.x, 0, this.sprite_manager.get_next_value('left'));
+                    this.process_movement(obj, 'left', this.map_manager.block_size.x, 0, 'left');
                     break;
                 case 'ArrowRight':
-                    if (this.move_manager.move(obj, 'right'))
-                        this.update_hero(-1 * this.map_manager.block_size.x, 0, this.sprite_manager.get_next_value('right'));
+                    this.process_movement(obj, 'right', -this.map_manager.block_size.x, 0, 'right');
                     break;
                 default:
                     break;
             }
+        
             setTimeout(() => {
                 is_moving = false;
             }, 150); 
         });
     }
+
+    process_movement(obj, side, x, y, sprite) {
+        let is_move = this.move_manager.move(obj, side);
+        this.check_move_hp(is_move);
+        this.update_entity(x, y, HERO_METKA, this.sprite_manager.get_next_value(sprite));
+    }
+
+    check_move_hp(is_move) {
+        if (is_move == HEAL_METKA) {
+            this.hero_manager.add_hp(HEAL_VALUE)
+            this.clear_bonus()
+        }
+    }
+
+
+    clear_bonus() {
+        for (let bonus of this.bonuses) {
+            if (bonus.coord_x == this.hero_manager.coord_x &&
+                bonus.coord_y == this.hero_manager.coord_y
+            ) {
+                this.map_manager.clear_entity(
+                    bonus.coord_x * this.map_manager.block_size.x,
+                    bonus.coord_y * this.map_manager.block_size.y,
+                    bonus.entity_width,
+                    bonus.entity_height,
+                    this.map_manager.ctx_canvas
+                )
+            }
+        }
+    }
     
 
-    update_hero(dop_x, dop_y, spriter) {
-        console.log(spriter)
+    update_entity(dop_x, dop_y, metka, spriter = 0) {
         this.map_manager.clear_entity(
             this.hero_manager.coord_x * this.map_manager.block_size.x + dop_x,
             this.hero_manager.coord_y * this.map_manager.block_size.y + dop_y,
@@ -114,10 +167,11 @@ class GameManager {
             this.hero_manager.entity_height,
             this.map_manager.ctx_canvas
         )
-        this.map_manager.draw_hero( 
+        this.map_manager.draw_entity( 
             this.hero_manager.gid + spriter, 
             this.hero_manager.coord_x, 
-            this.hero_manager.coord_y
+            this.hero_manager.coord_y,
+            metka
         )
     }
 
