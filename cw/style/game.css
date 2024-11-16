@@ -1,0 +1,42 @@
+* {
+    margin: 0;    
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../assest/img/background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.canvas-div {
+    position: relative;
+    width: 960px;
+    height: 640px; 
+}
+
+#game-canvas, #game-canvas-background, #game-canvas-fog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#game-canvas {
+    z-index: 1000;
+}
+
+#game-canvas-fog {
+    z-index: 2000;
+}
+
+
