@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    include headers/meta.pug
+    include headers/links.pug
+    include headers/scripts.pug
+    link(rel='stylesheet', href='/style/users_page_friends.css')
+    title Friends
+  body
+    style. 
+      .nav-link {
+        cursor: pointer;
+      }
+
+    ul.nav.nav-pills.mb-2.justify-content-center.navig-div.p-2
+      li.nav-item
+        a.nav-link#news Новости друзей
+      li.nav-item
+        a.nav-link.active Друзья
+      li.nav-item#redact
+        a.nav-link Редактировать профиль
+    .d-flex.justify-content-center
+      .card-custom-width
+        h2 Пользователь: 
+          span#user-title
+    .containter
+      .row#user
+    
+    include feature/return_button.pug
+  
+    script(src="/user_friends.js")
+
